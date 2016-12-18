@@ -1,0 +1,11 @@
+body {
+  font: 13px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+table.table-sm td{
+  vertical-align: middle;
+}
+
+#wrapper{
+  padding: 15px;
+}
