@@ -21,13 +21,13 @@ var bodyParser = require('body-parser'),
 // nconf.argv().env().file({
 //     file: 'dev-settings.json'
 // });
-var abc = process.env.client_secret;
-console.log(abc);
-nconf.set('oauth:api_key', process.env.api_key);
-nconf.set('oauth:client_secret', abc);
+var client_secret = process.env.client_secret,
+    api_key = process.env.api_key;
+nconf.set('oauth:api_key', api_key);
+nconf.set('oauth:client_secret', client_secret);
 nconf.set('oauth:redirect_url', "https://bookinstore.herokuapp.com/auth_token");
 nconf.set('oauth:scope', "read_products, write_products");
-console.log(app.nconf.get('oauth:api_key'));
+console.log(nconf.get('oauth:redirect_url'));
 exports.nconf = nconf;
 
 //configure express
