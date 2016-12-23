@@ -27,7 +27,7 @@ nconf.set('oauth:redirect_url', "https://bookinstore.herokuapp.com/auth_token");
 nconf.set('oauth:scope', "read_products, write_products");
 console.log('api_key '+nconf.get('oauth:api_key'));
 console.log('client_secret '+nconf.get('oauth:client_secret'));
-console.log(process.env);
+console.log(process.env.PORT);
 exports.nconf = nconf;
 
 //configure express
