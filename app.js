@@ -27,7 +27,7 @@ nconf.set('oauth:api_key', process.env.api_key);
 nconf.set('oauth:client_secret', abc);
 nconf.set('oauth:redirect_url', "https://bookinstore.herokuapp.com/auth_token");
 nconf.set('oauth:scope', "read_products, write_products");
-console.log(nconf.get('oauth:client_secret'));
+console.log(abc);
 exports.nconf = nconf;
 
 //configure express
