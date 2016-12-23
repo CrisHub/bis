@@ -24,10 +24,10 @@ var bodyParser = require('body-parser'),
 var abc = process.env.client_secret;
 console.log(abc);
 nconf.set('oauth:api_key', process.env.api_key);
-nconf.set('oauth:client_secret', process.env.client_secret);
+nconf.set('oauth:client_secret', abc);
 nconf.set('oauth:redirect_url', "https://bookinstore.herokuapp.com/auth_token");
 nconf.set('oauth:scope', "read_products, write_products");
-console.log(nconf.get('oauth:api_key'));
+console.log(nconf.get('oauth:client_secret'));
 exports.nconf = nconf;
 
 //configure express
