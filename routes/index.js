@@ -20,7 +20,6 @@ var mandrill_client = new mandrill.Mandrill(process.env.mandrill_key);
 var Shopify;
 
 var setShopify = function(req, res) {
-  req.session.destroy();
     var parsedUrl = url.parse(req.originalUrl, true);
     // req.session.oauth_access_token = 'c70a3aa425c46ec2e70067f1f6b36b10';
     // req.session.shopUrl = 'https://caramel-dev.myshopify.com';
@@ -52,8 +51,8 @@ var setShopify = function(req, res) {
  * redirect to app authorisation.
  */
 exports.index = function(req, res){
-  req.session.destroy();
     // req.session.oauth_access_token = 'c70a3aa425c46ec2e70067f1f6b36b10';
+    console.log(req.session);
     if (!req.session.oauth_access_token) {
         var parsedUrl = url.parse(req.originalUrl, true);
         if (parsedUrl.query && parsedUrl.query.shop) {
@@ -76,7 +75,6 @@ exports.index = function(req, res){
  * render the main app view
  */
 exports.renderApp = function(req, res){
-  req.session.destroy();
     setShopify(req, res); 
     var parsedUrl = url.parse(req.originalUrl, true);
     db.Product.findAll({
