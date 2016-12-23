@@ -52,7 +52,7 @@ var setShopify = function(req, res) {
  */
 exports.index = function(req, res){
     // req.session.oauth_access_token = 'c70a3aa425c46ec2e70067f1f6b36b10';
-    console.log(req.session);
+    req.session = null;
     if (!req.session.oauth_access_token) {
         var parsedUrl = url.parse(req.originalUrl, true);
         if (parsedUrl.query && parsedUrl.query.shop) {
