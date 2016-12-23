@@ -177,7 +177,6 @@ exports.bookProduct = function(req, res) {
       var sendObject = {"template_name": template_name, "template_content": template_content, "message": message, "async": async};
 
       mandrill_client.messages.sendTemplate(sendObject, function(result) {
-          console.log(result);
           res.json({product:product,created:created, email:'success'});
 
           /*
@@ -202,7 +201,6 @@ exports.bookConfirmation = function(req, res) {
     .findOne({where: {id:req.params.productId}})
     .then(function(product) {
       product.set('status', 'email-sent').save().then(function(product) {
-        console.log(product);
       });
       var product = product.get({plain: true});
       
@@ -258,7 +256,6 @@ exports.bookConfirmation = function(req, res) {
       var sendObject = {"template_name": template_name, "template_content": template_content, "message": message, "async": async};
 
       mandrill_client.messages.sendTemplate(sendObject, function(result) {
-          console.log(result);
           res.redirect("/render_app");
 
           /*
@@ -327,7 +324,6 @@ exports.softDeleteProduct = function(req, res) {
               }
             },
             function(err, data, headers) {
-                console.log("GET: ", data);
                 res.redirect("/render_app");
             });
           });
@@ -338,9 +334,7 @@ exports.softDeleteProduct = function(req, res) {
 
 exports.viewProduct = function(req, res) {
     setShopify(req, res);
-    console.log('GET: ',req.params);
     Shopify.get('/admin/metafields.json?namespace=book-in-store', function(err, data, headers) {
-        console.log("GET: ", data);
         res.render('view-product', {
             title: 'Configuration',
             apiKey: app.nconf.get('oauth:api_key'),

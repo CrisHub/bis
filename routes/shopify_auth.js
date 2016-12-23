@@ -70,6 +70,7 @@ exports.AppAuth = function() {
                     res.sendStatus(500);
                     return;
                 } else {
+                    console.log(access_token);
                     req.session.oauth_access_token = access_token;
                     res.redirect("/render_app");
                 }
