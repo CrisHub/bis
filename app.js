@@ -18,9 +18,9 @@ var bodyParser = require('body-parser'),
     morgan = require('morgan');
 
 //load settings from environment config
-nconf.env(['api_key','client_secret']);
-
-console.log(nconf.get('api_key'));
+nconf.env(['api_key','client_secret','redirect_url']);
+nconf.set('oauth:api_key', 'aaa')
+console.log(nconf.get('oauth:api_key'));
 exports.nconf = nconf;
 
 //configure express
