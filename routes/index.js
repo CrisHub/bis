@@ -21,8 +21,8 @@ var Shopify;
 
 var setShopify = function(req, res) {
     var parsedUrl = url.parse(req.originalUrl, true);
-    req.session.oauth_access_token = 'c70a3aa425c46ec2e70067f1f6b36b10';
-    req.session.shopUrl = 'https://caramel-dev.myshopify.com';
+    // req.session.oauth_access_token = 'c70a3aa425c46ec2e70067f1f6b36b10';
+    // req.session.shopUrl = 'https://caramel-dev.myshopify.com';
     //In case server stops and starts again, check if we need the auth token again
     if (!req.session.oauth_access_token) {
         if (parsedUrl.query && parsedUrl.query.shop) {
