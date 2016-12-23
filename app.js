@@ -18,15 +18,9 @@ var bodyParser = require('body-parser'),
     morgan = require('morgan');
 
 //load settings from environment config
-// nconf.argv().env().file({
-//     file: 'dev-settings.json'
-// });
-var client_secret = process.env.client_secret,
-    api_key = process.env.api_key;
-nconf.set('oauth:api_key', api_key);
-nconf.set('oauth:client_secret', client_secret);
-nconf.set('oauth:redirect_url', "https://bookinstore.herokuapp.com/auth_token");
-nconf.set('oauth:scope', "read_products, write_products");
+nconf.argv().env().file({
+    file: 'dev-settings.js'
+});
 console.log(nconf.get('oauth:redirect_url'));
 exports.nconf = nconf;
 
