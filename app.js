@@ -18,9 +18,8 @@ var bodyParser = require('body-parser'),
     morgan = require('morgan');
 
 //load settings from environment config
-nconf.argv().env().file({
-    file: 'settings.json'
-});
+nconf.argv().env();
+
 console.log(nconf.get('oauth:api_key'));
 exports.nconf = nconf;
 
