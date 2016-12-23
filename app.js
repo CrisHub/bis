@@ -21,7 +21,8 @@ var bodyParser = require('body-parser'),
 // nconf.argv().env().file({
 //     file: 'dev-settings.json'
 // });
-console.log(process.env.client_secret);
+var abc = process.env.client_secret;
+console.log(abc);
 nconf.set('oauth:api_key', process.env.api_key);
 nconf.set('oauth:client_secret', process.env.client_secret);
 nconf.set('oauth:redirect_url', "https://bookinstore.herokuapp.com/auth_token");
