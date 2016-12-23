@@ -19,7 +19,7 @@ var bodyParser = require('body-parser'),
 
 //load settings from environment config
 nconf.argv().env().file({
-    file: 'settings.js'
+    file: 'settings.json'
 });
 console.log(nconf.get('oauth:redirect_url'));
 exports.nconf = nconf;
