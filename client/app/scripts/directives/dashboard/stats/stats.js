@@ -9,7 +9,7 @@
 angular.module('sbAdminApp')
     .directive('stats',function() {
     	return {
-  		templateUrl:'scripts/directives/dashboard/stats/stats.html',
+  		templateUrl:'app/scripts/directives/dashboard/stats/stats.html',
   		restrict:'E',
   		replace:true,
   		scope: {
