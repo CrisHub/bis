@@ -84,15 +84,14 @@ exports.renderApp = function(req, res){
       limit: 250
   })
   .then(function(products) {
-      // res.render('app_view', {
-      //     title: 'Configuration',
-      //     apiKey: app.nconf.get('oauth:api_key'),
-      //     shopUrl: req.session.shopUrl,
-      //     body: 'Database configured',
-      //     type:'book-in-store',
-      //     products:products
-      // });
-      res.render('index', {title:'test'});
+      res.render('app_view', {
+          title: 'Configuration',
+          apiKey: app.nconf.get('oauth:api_key'),
+          shopUrl: req.session.shopUrl,
+          body: 'Database configured',
+          type:'book-in-store',
+          products:products
+      });
   });
 
 };

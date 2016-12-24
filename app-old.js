@@ -39,12 +39,10 @@ app.use(cookieSession({
 }));
 
 //statically serve from the 'public' folder
-// app.use(express.static(path.join(__dirname, 'public')));
+app.use(express.static(path.join(__dirname, 'public')));
 
 //use jade templating engine for view rendering
-app.engine('html', require('ejs').renderFile);
-app.set('view engine', 'html');
-app.set('views', path.join(__dirname, 'client/app/'));
+app.set('view engine', 'jade');
 
 //use the environment's port if specified
 app.set('port', process.env.PORT || 3000);
