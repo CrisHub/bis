@@ -19,7 +19,6 @@ var bodyParser = require('body-parser'),
 
 //load settings from environment config
 nconf.env(['oauth:api_key','oauth:client_secret','oauth:redirect_url','oauth:scope']);
-console.log(nconf.get('oauth:api_key'));
 exports.nconf = nconf;
 
 //configure express
