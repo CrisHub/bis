@@ -38,7 +38,7 @@ app.use(cookieSession({
 }));
 
 //statically serve from the 'public' folder
-app.use(express.static(path.join(__dirname, 'client/bower_components')));
+// app.use(express.static(path.join(__dirname, 'public')));
 
 //use jade templating engine for view rendering
 app.engine('html', require('ejs').renderFile);
