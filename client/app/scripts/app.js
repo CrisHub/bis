@@ -33,43 +33,43 @@ angular
                 {
                     name:'sbAdminApp',
                     files:[
-                    'scripts/directives/header/header.js',
-                    'scripts/directives/header/header-notification/header-notification.js',
-                    'scripts/directives/sidebar/sidebar.js',
-                    'scripts/directives/sidebar/sidebar-search/sidebar-search.js'
+                    'app/scripts/directives/header/header.js',
+                    'app/scripts/directives/header/header-notification/header-notification.js',
+                    'app/scripts/directives/sidebar/sidebar.js',
+                    'app/scripts/directives/sidebar/sidebar-search/sidebar-search.js'
                     ]
                 }),
                 $ocLazyLoad.load(
                 {
                    name:'toggle-switch',
-                   files:["bower_components/angular-toggle-switch/angular-toggle-switch.min.js",
-                          "bower_components/angular-toggle-switch/angular-toggle-switch.css"
+                   files:["bc/angular-toggle-switch/angular-toggle-switch.min.js",
+                          "bc/angular-toggle-switch/angular-toggle-switch.css"
                       ]
                 }),
                 $ocLazyLoad.load(
                 {
                   name:'ngAnimate',
-                  files:['bower_components/angular-animate/angular-animate.js']
+                  files:['bc/angular-animate/angular-animate.js']
                 })
                 $ocLazyLoad.load(
                 {
                   name:'ngCookies',
-                  files:['bower_components/angular-cookies/angular-cookies.js']
+                  files:['bc/angular-cookies/angular-cookies.js']
                 })
                 $ocLazyLoad.load(
                 {
                   name:'ngResource',
-                  files:['bower_components/angular-resource/angular-resource.js']
+                  files:['bc/angular-resource/angular-resource.js']
                 })
                 $ocLazyLoad.load(
                 {
                   name:'ngSanitize',
-                  files:['bower_components/angular-sanitize/angular-sanitize.js']
+                  files:['bc/angular-sanitize/angular-sanitize.js']
                 })
                 $ocLazyLoad.load(
                 {
                   name:'ngTouch',
-                  files:['bower_components/angular-touch/angular-touch.js']
+                  files:['bc/angular-touch/angular-touch.js']
                 })
             }
         }
@@ -83,11 +83,11 @@ angular
             return $ocLazyLoad.load({
               name:'sbAdminApp',
               files:[
-              'scripts/controllers/main.js',
-              'scripts/directives/timeline/timeline.js',
-              'scripts/directives/notifications/notifications.js',
-              'scripts/directives/chat/chat.js',
-              'scripts/directives/dashboard/stats/stats.js'
+              'app/scripts/controllers/main.js',
+              'app/scripts/directives/timeline/timeline.js',
+              'app/scripts/directives/notifications/notifications.js',
+              'app/scripts/directives/chat/chat.js',
+              'app/scripts/directives/dashboard/stats/stats.js'
               ]
             })
           }
@@ -114,13 +114,13 @@ angular
             return $ocLazyLoad.load({
               name:'chart.js',
               files:[
-                'bower_components/angular-chart.js/dist/angular-chart.min.js',
-                'bower_components/angular-chart.js/dist/angular-chart.css'
+                'bc/angular-chart.js/angular-chart.min.js',
+                'bc/angular-chart.js/angular-chart.css'
               ]
             }),
             $ocLazyLoad.load({
                 name:'sbAdminApp',
-                files:['scripts/controllers/chartContoller.js']
+                files:['app/scripts/controllers/chartContoller.js']
             })
           }
         }
