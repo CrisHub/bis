@@ -7,7 +7,8 @@
  * Controller of the sbAdminApp
  */
 angular.module('sbAdminApp')
-  .controller('MainCtrl', function($scope,$position) {
+  .controller('MainCtrl', function($scope,$position, resolveData) {
+  	console.log(resolveData);
   	var vm = this;
   	vm.pageTitle = 'Dashboard';
   });

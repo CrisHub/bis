@@ -76,25 +76,7 @@ exports.index = function(req, res){
 exports.renderApp = function(req, res){
     setShopify(req, res); 
     var parsedUrl = url.parse(req.originalUrl, true);
-    db.Product.findAll({
-      where:{'type':'book-in-store', deletedAt:null},
-      paranoid: false,
-      raw:true,
-      offset: 0,
-      limit: 250
-  })
-  .then(function(products) {
-      // res.render('app_view', {
-      //     title: 'Configuration',
-      //     apiKey: app.nconf.get('oauth:api_key'),
-      //     shopUrl: req.session.shopUrl,
-      //     body: 'Database configured',
-      //     type:'book-in-store',
-      //     products:products
-      // });
-      res.render('index');
-  });
-
+    res.render('index');
 };
 
 
@@ -329,8 +311,6 @@ exports.softDeleteProduct = function(req, res) {
             });
           });
         })
-
-  
 };
 
 exports.viewProduct = function(req, res) {
@@ -344,3 +324,17 @@ exports.viewProduct = function(req, res) {
         });
     });
 };
+
+
+exports.getProduct = function(req, res) {
+  db.Product.findAll({
+      where:{'type':'book-in-store', deletedAt:null},
+      paranoid: false,
+      raw:true,
+      offset: 0,
+      limit: 250
+  })
+  .then(function(products) {
+      res.json(products);
+  });
+}

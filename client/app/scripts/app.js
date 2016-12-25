@@ -94,8 +94,9 @@ angular
             // Simple GET request example:
             $http({
               method: 'GET',
-              url: '/someUrl'
+              url: '/products'
             }).then(function successCallback(response) {
+                return response;
                 // this callback will be called asynchronously
                 // when the response is available
               }, function errorCallback(response) {

@@ -41,7 +41,6 @@ app.use(cookieSession({
 app.use(express.static(path.join(__dirname, 'client')));
 
 //use jade templating engine for view rendering
-app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 app.set('views', path.join(__dirname, 'client/app/'));
 
@@ -73,6 +72,7 @@ app.get('/view-product/:productId', routes.viewProduct);
 app.get('/delete-product/:variantId', routes.deleteProduct);
 app.get('/soft-delete-product/:variantId', routes.softDeleteProduct);
 app.post('/book-product', cors(corsOptions), routes.bookProduct);
+app.get('/products', routes.getPrducts);
 
 
 db.sequelize.sync().then(function() {
