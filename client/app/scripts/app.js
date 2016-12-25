@@ -76,7 +76,6 @@ angular
     })
       .state('dashboard.home',{
         url:'/home',
-        controller:'MainCtrl',
         templateUrl:'app/views/dashboard/home.html',
         resolve: {
           loadMyFiles:function($ocLazyLoad) {
@@ -92,7 +91,6 @@ angular
             })
           },
           resolveData: function($http) {
-            // Simple GET request example:
             return $http({
               method: 'GET',
               url: '/products'
