@@ -93,7 +93,7 @@ angular
           },
           resolveData: function($http) {
             // Simple GET request example:
-            $http({
+            return $http({
               method: 'GET',
               url: '/products'
             }).then(function successCallback(response) {
