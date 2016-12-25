@@ -326,7 +326,7 @@ exports.viewProduct = function(req, res) {
 };
 
 
-exports.getProduct = function(req, res) {
+exports.getProducts = function(req, res) {
   db.Product.findAll({
       where:{'type':'book-in-store', deletedAt:null},
       paranoid: false,

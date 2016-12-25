@@ -72,7 +72,7 @@ app.get('/view-product/:productId', routes.viewProduct);
 app.get('/delete-product/:variantId', routes.deleteProduct);
 app.get('/soft-delete-product/:variantId', routes.softDeleteProduct);
 app.post('/book-product', cors(corsOptions), routes.bookProduct);
-app.get('/products', routes.getPrducts);
+app.get('/products', routes.getProducts);
 
 
 db.sequelize.sync().then(function() {
