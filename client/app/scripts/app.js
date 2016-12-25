@@ -76,6 +76,7 @@ angular
     })
       .state('dashboard.home',{
         url:'/home',
+        controller:'MainCtrl',
         templateUrl:'app/views/dashboard/home.html',
         resolve: {
           loadMyFiles:function($ocLazyLoad) {
