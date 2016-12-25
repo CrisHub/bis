@@ -92,7 +92,7 @@ exports.renderApp = function(req, res){
       //     type:'book-in-store',
       //     products:products
       // });
-      res.render('index', {title:'test'});
+      res.render('index', {products:products});
   });
 
 };

@@ -76,7 +76,6 @@ angular
     })
       .state('dashboard.home',{
         url:'/home',
-        controller: 'MainCtrl',
         templateUrl:'app/views/dashboard/home.html',
         resolve: {
           loadMyFiles:function($ocLazyLoad) {
@@ -90,6 +89,19 @@ angular
               'app/scripts/directives/dashboard/stats/stats.js'
               ]
             })
+          },
+          resolveData: function($http) {
+            // Simple GET request example:
+            $http({
+              method: 'GET',
+              url: '/someUrl'
+            }).then(function successCallback(response) {
+                // this callback will be called asynchronously
+                // when the response is available
+              }, function errorCallback(response) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+              });
           }
         }
       })

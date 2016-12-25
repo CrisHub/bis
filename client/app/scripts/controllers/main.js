@@ -8,4 +8,6 @@
  */
 angular.module('sbAdminApp')
   .controller('MainCtrl', function($scope,$position) {
+  	var vm = this;
+  	vm.pageTitle = 'Dashboard';
   });
