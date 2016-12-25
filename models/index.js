@@ -3,11 +3,11 @@ if (!global.hasOwnProperty('db')) {
     , sequelize = null
 
   // the application is executed on Heroku ... use the postgres database
-  sequelize = new Sequelize('postgres://ssifxtlukxuvhx:bZanhYWi7SKRsOqZEMRTTeWLwL@ec2-54-217-213-156.eu-west-1.compute.amazonaws.com:5432/d86jck52dm112l', {
+  sequelize = new Sequelize(process.env.databaseUrl, {
     dialect:  'postgres',
     protocol: 'postgres',
     port:     5432,
-    host:     'ec2-54-217-213-156.eu-west-1.compute.amazonaws.com',
+    host:     process.env.databaseHost,
     logging:  true //false
   });
 
