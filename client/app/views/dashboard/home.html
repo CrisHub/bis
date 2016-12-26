@@ -23,6 +23,35 @@
                                     <th>Client</th>
                                     <th>Store</th>
                                     <th>Comments</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr ng-repeat="product in products">
+                                    <td>{{$index+1}}</td>
+                                    <td>{{product.name}}</td>
+                                    <td>{{product.variant}}</td>
+                                    <td>{{product.quantity}}</td>
+                                    <td>
+                                        <div>
+                                            <strong>Name:</strong>
+                                            {{product.customerFirstName+' '+ product.customerLastName}}
+                                        </div>
+                                        <div>
+                                            <strong>Email:</strong>
+                                            {{product.customerEmail}}
+                                        </div>
+                                        <div>
+                                            <strong>Phone:</strong>
+                                            {{product.customerPhone}}
+                                        </div>
+                                    </td>
+                                    <td>
+                                        {{product.store}}
+                                    </td>
+                                    <td>
+                                        {{product.comments}}
+                                    </td>
                                     <th>
                                     <!-- Split button -->
                                         <div class="btn-group">
@@ -42,14 +71,6 @@
                                             </ul>
                                             </div>
                                         </th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr ng-repeat="product in products">
-                                    <td>{{$index}}</td>
-                                    <td>aaa</td>
-                                    <td>Otto</td>
-                                    <td>@mdo</td>
                                 </tr>
                             </tbody>
                         </table>
