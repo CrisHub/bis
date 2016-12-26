@@ -8,6 +8,7 @@
  */
 angular.module('sbAdminApp')
   .controller('MainCtrl', function($scope,$position, resolveData) {
-  	var vm = this;
-  	vm.pageTitle = 'Dashboard';
+  	$scope.products = resolveData.data.products;
+  	$scope.pageTitle = 'Booked products';
+  	console.log($scope.products);
   });
