@@ -8,7 +8,7 @@
  */
 angular.module('sbAdminApp')
   .controller('MainCtrl', function($scope,$position, resolveData) {
-  	$scope.products = resolveData.data.products;
+  	$scope.products = resolveData;
   	$scope.pageTitle = 'Booked products';
   	console.log($scope.products);
   });
