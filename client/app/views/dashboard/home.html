@@ -30,8 +30,8 @@
                                 <tr ng-repeat="product in products">
                                     <td>{{$index+1}}</td>
                                     <td>
-                                        <div><a ng-href="{{product.image}}" target="_blank">{{product.name}}</a></div>
-                                        <img ng-src="{{product.image}}" style="max-width:150px;" />
+                                        <a ng-href="{{product.image}}" target="_blank" style="display: inline-block;vertical-align: middle;">{{product.name}}</a>
+                                        <img ng-src="{{product.image}}" style="max-height:60px; display: inline-block;vertical-align: middle;" />
                                     </td>
                                     <td>{{product.variant}}</td>
                                     <td>{{product.quantity}}</td>
