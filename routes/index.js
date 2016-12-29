@@ -184,78 +184,79 @@ exports.bookConfirmation = function(req, res) {
     .findOne({where: {id:req.params.productId}})
     .then(function(product) {
       product.set('status', 'email-sent').save().then(function(product) {
-      // var product = product.get({plain: true});
-      console.log(product.variant);
-      var subject = "Rezervare produs: Succes!",
-      template_name = "Comanda ta te asteapta in magazinul Caramel!",
-      template_content = [{
-        "name": "Rezervare produs",
-        "content": "Rezervare produs"
-      }];
-      var message = {
-              "subject": subject,
-              "from_email": "contact@caramel.ro",
-              "from_name": "Caramel Fashion",
-              "to": [{
-                      "email": product.customerEmail,
-                      "name": product.customerFirstName+' '+product.customerLastName,
-                      "type": "to"
-                  }],
-              "merge": true,
-              "merge_language": "mailchimp",
-              "merge_vars": [{
-                      "rcpt": product.customerEmail,
-                      "vars": [{
-                                "name": "username",
-                                'content':product.customerLastName
-                              }, {
-                                'name': 'storeName',
-                                'content':product.store
-                              }, {
-                                'name': 'pTitle',
-                                'content':product.name
-                              }, {
-                                'name':'pQty',
-                                'content':product.quantity
-                              }, {
-                                'name':'pVariant',
-                                'content':product.variant.split('-')[0]
-                              }, {
-                                'name':'pPrice',
-                                'content':product.variant.split('-')[1]
-                              }, {
-                                'name':'pLink',
-                                'content':product.link
-                              }, {
-                                'name':'crtDate',
-                                'content': moment().format("DD.MM.YYYY")
-                              }]
-                  }],
-          };
-
-      
-      var async = false;
-      var sendObject = {"template_name": template_name, "template_content": template_content, "message": message, "async": async};
-
-      mandrill_client.messages.sendTemplate(sendObject, function(result) {
-          // this.getProducts();
+          var product = product.get({plain: true});
           
+          var subject = "Rezervare produs: Succes!",
+          template_name = "Comanda ta te asteapta in magazinul Caramel!",
+          template_content = [{
+            "name": "Rezervare produs",
+            "content": "Rezervare produs"
+          }];
+          var message = {
+                  "subject": subject,
+                  "from_email": "contact@caramel.ro",
+                  "from_name": "Caramel Fashion",
+                  "to": [{
+                          "email": product.customerEmail,
+                          "name": product.customerFirstName+' '+product.customerLastName,
+                          "type": "to"
+                      }],
+                  "merge": true,
+                  "merge_language": "mailchimp",
+                  "merge_vars": [{
+                          "rcpt": product.customerEmail,
+                          "vars": [{
+                                    "name": "username",
+                                    'content':product.customerLastName
+                                  }, {
+                                    'name': 'storeName',
+                                    'content':product.store
+                                  }, {
+                                    'name': 'pTitle',
+                                    'content':product.name
+                                  }, {
+                                    'name':'pQty',
+                                    'content':product.quantity
+                                  }, {
+                                    'name':'pVariant',
+                                    'content':product.variant.split('-')[0]
+                                  }, {
+                                    'name':'pPrice',
+                                    'content':product.variant.split('-')[1]
+                                  }, {
+                                    'name':'pLink',
+                                    'content':product.link
+                                  }, {
+                                    'name':'crtDate',
+                                    'content': moment().format("DD.MM.YYYY")
+                                  }]
+                      }],
+              };
 
-          /*
-          [{
-                  "email": "recipient.email@example.com",
-                  "status": "sent",
-                  "reject_reason": "hard-bounce",
-                  "_id": "abc123abc123abc123abc123abc123"
-              }]
-          */
-      }, function(e) {
-          // Mandrill returns the error as an object with name and message keys
-          console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);
-          res.redirect("/render_app");
-          // A mandrill error occurred: Unknown_Subaccount - No subaccount exists with the id 'customer-123'
-      });
+          
+          var async = false;
+          var sendObject = {"template_name": template_name, "template_content": template_content, "message": message, "async": async};
 
+          mandrill_client.messages.sendTemplate(sendObject, function(result) {
+              // res.redirect("/render_app");
+              console.log(result);
+              res.json(product);
+
+              /*
+              [{
+                      "email": "recipient.email@example.com",
+                      "status": "sent",
+                      "reject_reason": "hard-bounce",
+                      "_id": "abc123abc123abc123abc123abc123"
+                  }]
+              */
+          }, function(e) {
+              // Mandrill returns the error as an object with name and message keys
+              console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);
+              res.redirect("/render_app");
+              // A mandrill error occurred: Unknown_Subaccount - No subaccount exists with the id 'customer-123'
+          });
+        });
     });
 };
 
