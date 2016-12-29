@@ -184,8 +184,7 @@ exports.bookConfirmation = function(req, res) {
     .findOne({where: {id:req.params.productId}})
     .then(function(product) {
       product.set('status', 'email-sent').save().then(function(product) {
-      });
-      var product = product.get({plain: true});
+      // var product = product.get({plain: true});
       console.log(product.variant);
       var subject = "Rezervare produs: Succes!",
       template_name = "Comanda ta te asteapta in magazinul Caramel!",
@@ -239,7 +238,8 @@ exports.bookConfirmation = function(req, res) {
       var sendObject = {"template_name": template_name, "template_content": template_content, "message": message, "async": async};
 
       mandrill_client.messages.sendTemplate(sendObject, function(result) {
-          this.getProducts();
+          // this.getProducts();
+          
 
           /*
           [{
