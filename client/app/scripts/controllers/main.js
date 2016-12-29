@@ -7,7 +7,7 @@
  * Controller of the sbAdminApp
  */
 angular.module('sbAdminApp')
-  .controller('MainCtrl', function($scope, $position, $http, resolveData) {
+  .controller('MainCtrl', function($scope, $position, $http, resolveData, alertify) {
   	$scope.products = resolveData.data;
   	$scope.pageTitle = 'Booked products';
   	$scope.sendEmail = function(id) {
