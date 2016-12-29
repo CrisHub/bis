@@ -180,10 +180,10 @@ exports.bookProduct = function(req, res) {
 };
 
 exports.bookConfirmation = function(req, res) {
-  console.log(req.params);
   db.Product
     .findOne({where: {id:req.params.productId}})
     .then(function(product) {
+      console.log(product);
       product.set('status', 'email-sent').save().then(function(product) {
       });
       var product = product.get({plain: true});
