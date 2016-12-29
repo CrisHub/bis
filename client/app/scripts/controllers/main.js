@@ -10,6 +10,7 @@ angular.module('sbAdminApp')
   .controller('MainCtrl', function($scope, $position, $http, resolveData, alertify) {
   	$scope.products = resolveData.data;
   	$scope.pageTitle = 'Booked products';
+  	alertify.success("Welcome to alertify!");
   	$scope.sendEmail = function(id) {
   		$http.get('/book-confirmation/'+id).then(function(response) {
   			console.log(response);
