@@ -56,19 +56,19 @@
                                         <div>{{product.comments}}</div>
                                         <div style="margin-top:5px;">Rezervat in data de:<em><strong>{{product.createdAt | date:'dd/MM/yyyy'}}</strong></em></div>
                                     </td>
-                                    <th style="width: 115px;">
+                                    <th style="width: 140px;">
                                     <!-- Split button -->
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-default">
                                                 <span ng-if="product.status == 'email-sent'">Email sent</span>
-                                                <span ng-if="!product.status == 'email-sent'">Actions</span>
+                                                <span ng-if="product.status != 'email-sent'">Actions</span>
                                             </button>
                                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <span class="caret"></span>
                                                 <span class="sr-only">Toggle Dropdown</span>
                                             </button>
                                             <ul class="dropdown-menu" style="left:-65px;">
-                                                <li ng-if="!product.status == 'email-sent'"><a ng-click="sendEmail(product.variantId)" style="cursor: pointer;">Send email</a></li>
+                                                <li ng-if="product.status != 'email-sent'"><a ng-click="sendEmail(product.variantId)" style="cursor: pointer;">Send email</a></li>
                                                 <li><a ng-click="pickedUp(product.variantId)" style="cursor: pointer;">Picked up</a></li>
                                                 <li role="separator" class="divider"></li>
                                                 <li><a ng-click="unpiked(product.variantId)" style="cursor: pointer;">Unpiked/Delete</a></li>
