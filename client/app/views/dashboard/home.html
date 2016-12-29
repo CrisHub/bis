@@ -29,7 +29,10 @@
                             <tbody>
                                 <tr ng-repeat="product in products">
                                     <td>{{$index+1}}</td>
-                                    <td>{{product.name}}</td>
+                                    <td>
+                                        <div><a ng-href="product.image" target="_blank">{{product.name}}</a></div>
+                                        <img ng-src="product.image" style="max-width:150px;" />
+                                    </td>
                                     <td>{{product.variant}}</td>
                                     <td>{{product.quantity}}</td>
                                     <td>
@@ -52,19 +55,19 @@
                                     <td>
                                         {{product.comments}}
                                     </td>
-                                    <th>
+                                    <th style="width: 115px;">
                                     <!-- Split button -->
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-default">
-                                                <span ng-if="status.emailSent">Email sent</span>
-                                                <span ng-if="!statu.emailSent">Action</span>
+                                                <span ng-if="product.status.email-sent">Email sent</span>
+                                                <span ng-if="!product.status.email-sent">Actions</span>
                                             </button>
                                             <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                 <span class="caret"></span>
                                                 <span class="sr-only">Toggle Dropdown</span>
                                             </button>
                                             <ul class="dropdown-menu">
-                                                <li ng-if="!status.emailSent"><a href="#">Send email</a></li>
+                                                <li ng-if="!product.status.email-sent"><a href="#">Send email</a></li>
                                                 <li><a href="#">Picked up</a></li>
                                                 <li role="separator" class="divider"></li>
                                                 <li><a href="#">Unpiked/Delete</a></li>
