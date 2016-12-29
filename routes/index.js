@@ -184,7 +184,7 @@ exports.bookConfirmation = function(req, res) {
     .findOne({where: {id:req.params.productId}})
     .then(function(product) {
       product.set('status', 'email-sent').save().then(function(product) {
-          var product = product.get({plain: true});
+          // var product = product.get({plain: true});
           
           var subject = "Rezervare produs: Succes!",
           template_name = "Comanda ta te asteapta in magazinul Caramel!",
@@ -253,7 +253,8 @@ exports.bookConfirmation = function(req, res) {
           }, function(e) {
               // Mandrill returns the error as an object with name and message keys
               console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);
-              res.redirect("/render_app");
+              // res.redirect("/render_app");
+              res.json(e);
               // A mandrill error occurred: Unknown_Subaccount - No subaccount exists with the id 'customer-123'
           });
         });
