@@ -186,7 +186,7 @@ exports.bookConfirmation = function(req, res) {
       product.set('status', 'email-sent').save().then(function(product) {
       });
       var product = product.get({plain: true});
-      
+      console.log(product.variant);
       var subject = "Rezervare produs: Succes!",
       template_name = "Comanda ta te asteapta in magazinul Caramel!",
       template_content = [{
