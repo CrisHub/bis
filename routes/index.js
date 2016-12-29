@@ -183,7 +183,6 @@ exports.bookConfirmation = function(req, res) {
   db.Product
     .findOne({where: {id:req.params.productId}})
     .then(function(product) {
-      console.log(product);
       product.set('status', 'email-sent').save().then(function(product) {
       });
       var product = product.get({plain: true});
@@ -240,7 +239,7 @@ exports.bookConfirmation = function(req, res) {
       var sendObject = {"template_name": template_name, "template_content": template_content, "message": message, "async": async};
 
       mandrill_client.messages.sendTemplate(sendObject, function(result) {
-          res.redirect("/render_app");
+          this.getProducts();
 
           /*
           [{
