@@ -331,10 +331,9 @@ exports.getProducts = function(req, res) {
   var query = req.query.type ? req.query : {type:'book-in-store', deletedAt:null};
   if (typeof(query) == 'string'){
     query = JSON.parse(query);
-    // console.log(req.query);
   }
   db.Product.findAll({
-      where:query,
+      where:{type:'picked'},
       paranoid: false,
       raw:true,
       offset: 0,
