@@ -345,5 +345,4 @@ exports.getProducts = function(req, res) {
   .then(function(products) {
       res.json(products);
   });
-  }
-}
+};
