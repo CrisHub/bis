@@ -62,7 +62,7 @@ angular.module('sbAdminApp')
   	};
   	$scope.getFiltered = function(type) {
   		var query = {type:type, deletedAt:null}
-  		$http.get('/products'+srz(query)).then(function(response) {
+  		$http.get('/products?'+srz(query)).then(function(response) {
 
   		});
   	}
