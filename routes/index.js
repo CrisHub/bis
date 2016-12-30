@@ -308,10 +308,10 @@ exports.softDeleteProduct = function(req, res) {
               }
             },
             function(err, data, headers) {
-                res.redirect("/render_app");
+                res.json(product)
             });
           });
-        })
+        });
 };
 
 exports.viewProduct = function(req, res) {
