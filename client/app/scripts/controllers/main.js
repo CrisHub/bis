@@ -8,9 +8,22 @@
  */
 angular.module('sbAdminApp')
   .controller('MainCtrl', function($scope, $position, $http, resolveData, alertify) {
+  	$scope.currentFilter = 'Default';
   	$scope.products = resolveData.data;
   	$scope.pageTitle = 'Booked products';
   	alertify.logPosition("top left");
+  	var srz = function(obj, prefix) {
+	  var str = [], p;
+	  for(p in obj) {
+	    if (obj.hasOwnProperty(p)) {
+	      var k = prefix ? prefix + "[" + p + "]" : p, v = obj[p];
+	      str.push((v !== null && typeof v === "object") ?
+	        serialize(v, k) :
+	        encodeURIComponent(k) + "=" + encodeURIComponent(v));
+	    }
+	  }
+	  return str.join("&");
+	}
   	$scope.sendEmail = function(id) {
   		$http.get('/book-confirmation/'+id).then(function(response) {
   			angular.forEach($scope.products, function(p, idx) {
@@ -47,4 +60,10 @@ angular.module('sbAdminApp')
   			alertify.error(response);
   		});
   	};
+  	$scope.getFiltered = function(type) {
+  		var query = {type:type, deletedAt:null}
+  		$http.get('/products'+srz(query)).then(function(response) {
+
+  		});
+  	}
   });

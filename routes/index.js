@@ -328,8 +328,15 @@ exports.viewProduct = function(req, res) {
 
 
 exports.getProducts = function(req, res) {
+  console.log(req.query);
+  if (req.query.type !== 'archive') {
+    var query = {type:req.query.type, deletedAt:null};
+  } else {
+    var query = {type:'picked'}
+  }
+
   db.Product.findAll({
-      where:{'type':'book-in-store', deletedAt:null},
+      where:query,
       paranoid: false,
       raw:true,
       offset: 0,
@@ -338,4 +345,5 @@ exports.getProducts = function(req, res) {
   .then(function(products) {
       res.json(products);
   });
+  }
 }
