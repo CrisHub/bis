@@ -328,7 +328,7 @@ exports.viewProduct = function(req, res) {
 
 
 exports.getProducts = function(req, res) {
-  console.log(req.query);
+  console.log('Queryyyyy:'+req.query);
   if (req.query.type !== 'archive') {
     var query = {type:req.query.type, deletedAt:null};
   } else {
