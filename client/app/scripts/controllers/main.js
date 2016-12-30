@@ -15,7 +15,7 @@ angular.module('sbAdminApp')
   		$http.get('/book-confirmation/'+id).then(function(response) {
   			angular.forEach($scope.products, function(p, idx) {
 				if (p.id === response.data.id){
-					p = response.data;
+					$scope.products[idx] = response.data;
 				}
 			});
   			alertify.success('Email successfully sent!');
