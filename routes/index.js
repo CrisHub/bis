@@ -329,8 +329,8 @@ exports.viewProduct = function(req, res) {
 
 exports.getProducts = function(req, res) {
   var query = {type:'book-in-store', deletedAt:null};
-  for (var q=0;req.query.length > q; q++) {
-    console.log(req.query[q]);
+  if (req.query.status == 'picked') {
+    query = {type:'book-in-store', status:req.query.status}
   }
   db.Product.findAll({
       where:query,
