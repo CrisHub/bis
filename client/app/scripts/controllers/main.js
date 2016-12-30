@@ -27,7 +27,7 @@ angular.module('sbAdminApp')
   		$http.get('/soft-delete-product/'+id).then(function(response) {
   			angular.forEach($scope.products, function(p, idx) {
   				if (p.id === response.data.id) {
-  					$scope.products[idx] = response.data;
+  					$scope.products.splice(idx, 1);
   				}
   			});
   			alertify.success('Product successfully archived!');
