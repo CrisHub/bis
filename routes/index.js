@@ -328,7 +328,7 @@ exports.viewProduct = function(req, res) {
 
 
 exports.getProducts = function(req, res) {
-  var query = req.query ? req.query : {type:'book-in-store', deletedAt:null};
+  var query = req.query || {type:'book-in-store', deletedAt:null};
   console.log(req.query);
   console.log(typeof (query));
   db.Product.findAll({
