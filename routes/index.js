@@ -328,9 +328,8 @@ exports.viewProduct = function(req, res) {
 
 
 exports.getProducts = function(req, res) {
-  console.log('Queryyyyy:'+req.query);
   if (req.query.type !== 'archive') {
-    var query = {type:req.query.type, deletedAt:null};
+    var query = {type:req.query.type ? req.query.type : 'book-in-store', deletedAt:null};
   } else {
     var query = {type:'picked'}
   }
