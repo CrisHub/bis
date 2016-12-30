@@ -16,6 +16,7 @@ angular.module('sbAdminApp')
   			angular.forEach($scope.products, function(p, idx) {
 				if (p.id === response.id){
 					$scope.products[idx] = response;
+					console.log($scope.products[idx]);
 				}
 			});
   			alertify.success('Email successfully sent!');
