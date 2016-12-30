@@ -2,7 +2,19 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header">
-                
+                <div class="btn-group">
+                  <button type="button" class="btn btn-primary">Filter by:</button>
+                  <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                  <ul class="dropdown-menu">
+                    <li><a ng-click="getFiltered('all')">Default(confirmed &and; not cofirmed)</a></li>
+                    <li><a ng-click="getFiltered('picked')">Archived</a></li>
+                    <li><a ng-click="getFiltered('email-sent')">Confirmed</a></li>
+                    <li><a ng-click="getFiltered('not-confirmed')">Not confirmed</a></li>
+                  </ul>
+                </div>
             </h1>
         </div>
     </div>
@@ -73,7 +85,7 @@
                                                 <li ng-if="product.status != 'email-sent'"><a ng-click="sendEmail(product.id)" style="cursor: pointer;">Send email</a></li>
                                                 <li><a ng-click="pickedUp(product.variantId)" style="cursor: pointer;">Picked up</a></li>
                                                 <li role="separator" class="divider"></li>
-                                                <li><a ng-click="unpiked(product.variantId)" style="cursor: pointer;">Unpiked/Delete</a></li>
+                                                <li><a ng-click="unpicked(product.variantId)" style="cursor: pointer;">Unpiked/Delete</a></li>
                                             </ul>
                                             </div>
                                         </th>

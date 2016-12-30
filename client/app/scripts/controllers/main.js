@@ -35,11 +35,16 @@ angular.module('sbAdminApp')
   			alertify.error(response);
   		})
   	} 
-  	$scope.unpiked = function(id) {
+  	$scope.unpicked = function(id) {
   		$http.get('/delete-product/'+id).then(function(response) {
-  			console.log(response);
+  			angular.forEach($scope.products, function(p, idx) {
+  				if (p.id === response.data.id) {
+  					$scope.products.splice(idx, 1);
+  				}
+  			});
+  			alertify.success('Product successfully deleted!');
   		}, function(response) {
-  			console.log(response);
+  			alertify.error(response);
   		});
   	};
   });
