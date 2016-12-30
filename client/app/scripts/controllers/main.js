@@ -13,6 +13,7 @@ angular.module('sbAdminApp')
   	alertify.logPosition("top left");
   	$scope.sendEmail = function(id) {
   		$http.get('/book-confirmation/'+id).then(function(response) {
+  			console.log(response.id);
   			angular.forEach($scope.products, function(p, idx) {
 				if (p.id === response.id){
 					$scope.products[idx] = response;
