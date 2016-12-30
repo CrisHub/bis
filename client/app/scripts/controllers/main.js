@@ -36,6 +36,7 @@ angular.module('sbAdminApp')
   			alertify.error(response);
   		});
   	};
+  	
   	$scope.pickedUp = function(id) {
   		$http.get('/soft-delete-product/'+id).then(function(response) {
   			angular.forEach($scope.products, function(p, idx) {
