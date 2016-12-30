@@ -11,13 +11,11 @@ angular.module('sbAdminApp')
   	$scope.products = resolveData.data;
   	$scope.pageTitle = 'Booked products';
   	alertify.logPosition("top left");
-
-  	
   	$scope.sendEmail = function(id) {
   		$http.get('/book-confirmation/'+id).then(function(response) {
-  			angular.forEach($scope.products, function(p) {
+  			angular.forEach($scope.products, function(p, idx) {
 				if (p.id === response.id){
-					p = response;
+					$scope.products[idx] = response;
 				}
 			});
   			alertify.success('Email successfully sent!');
