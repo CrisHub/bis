@@ -303,6 +303,8 @@ exports.softDeleteProduct = function(req, res) {
           }
         }).then(function(product) {
           product.set({status:'picked'}).save().then(function() {
+                res.json(product)
+
             // Shopify.put('/admin/variants/'+req.params.variantId+'.json',
             // {
             //   "variant": {
