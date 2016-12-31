@@ -83,7 +83,7 @@
                                                 <span class="sr-only">Toggle Dropdown</span>
                                             </button>
                                             <ul class="dropdown-menu" style="left:-65px;" ng-style="{ top: $last ? 'auto' : '0px', bottom: $last ? '0px' : 'auto' }">
-                                                <li ng-if="product.status != 'email-sent'"><a ng-click="sendEmail(product.id)" style="cursor: pointer;">Send email {{product.status == 'email-sent'}}</a></li>
+                                                <li ng-if="product.status != 'email-sent'"><a ng-click="sendEmail(product.id)" style="cursor: pointer;">Send email</a></li>
                                                 <li><a ng-click="pickedUp(product.id)" style="cursor: pointer;">Picked up</a></li>
                                                 <li role="separator" class="divider"></li>
                                                 <li><a ng-click="unpicked(product.id)" style="cursor: pointer;">Unpiked/Delete</a></li>
