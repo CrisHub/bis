@@ -302,7 +302,7 @@ exports.softDeleteProduct = function(req, res) {
             id:req.params.id
           }
         }).then(function(product) {
-          product.destroy().then(function() {
+          product.destroy({paranoid:true}).then(function() {
             product.set({status:'picked'}).save().then(function() {
               res.json(product);
               // Shopify.put('/admin/variants/'+req.params.variantId+'.json',
