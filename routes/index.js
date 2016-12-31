@@ -300,16 +300,17 @@ exports.softDeleteProduct = function(req, res) {
         .findOne({where:{id:req.params.id}})
         .then(function(product) {
           product.set({status:'picked', deletedAt:moment().format('YYYY-MM-DD kk:mm:ss')}).save().then(function() {
-            Shopify.put('/admin/variants/'+req.params.variantId+'.json',
-            {
-              "variant": {
-                "id": parseInt(req.params.variantId),
-                "inventory_quantity_adjustment": -1
-              }
-            },
-            function(err, data, headers) {
-                res.json(product)
-            });
+            console.log(product.dataValues.variantId);
+            // Shopify.put('/admin/variants/'+product.dataValues.variantId+'.json',
+            // {
+            //   "variant": {
+            //     "id": parseInt(product.dataValues.variantId),
+            //     "inventory_quantity_adjustment": -1
+            //   }
+            // },
+            // function(err, data, headers) {
+            //     res.json(product)
+            // });
           });
         });
 };
