@@ -297,21 +297,28 @@ exports.softDeleteProduct = function(req, res) {
   setShopify(req, res);
   var parsedUrl = url.parse(req.originalUrl, true);
   db.Product
-        .findOne({where:{variantId:req.params.variantId}})
-        .then(function(product) {
-          product.set({status:'picked', deletedAt:moment().format('YYYY-MM-DD kk:mm:ss')}).save().then(function() {
-            Shopify.put('/admin/variants/'+req.params.variantId+'.json',
-            {
-              "variant": {
-                "id": parseInt(req.params.variantId),
-                "inventory_quantity_adjustment": -1
-              }
-            },
-            function(err, data, headers) {
-                res.json(product)
-            });
-          });
+        .destroy({
+          where:{
+            variantId:req.params.variantId
+          }
+        }).then(function(product) {
+          res.json(product);
         });
+        // .findOne({where:{variantId:req.params.variantId}})
+        // .then(function(product) {
+        //   product.set({status:'picked', deletedAt:moment().format('YYYY-MM-DD kk:mm:ss')}).save().then(function() {
+        //     Shopify.put('/admin/variants/'+req.params.variantId+'.json',
+        //     {
+        //       "variant": {
+        //         "id": parseInt(req.params.variantId),
+        //         "inventory_quantity_adjustment": -1
+        //       }
+        //     },
+        //     function(err, data, headers) {
+        //         res.json(product)
+        //     });
+        //   });
+        // });
 };
 
 exports.viewProduct = function(req, res) {
@@ -328,10 +335,8 @@ exports.viewProduct = function(req, res) {
 
 
 exports.getProducts = function(req, res) {
-  var query = {type:'book-in-store', deletedAt:null};
-  if (req.query.status == 'picked') {
-    query = {type:'book-in-store', status:req.query.status}
-  }
+  var filters = {type:'book-in-store', deletedAt:null};
+
   db.Product.findAll({
       where:query,
       paranoid: false,
