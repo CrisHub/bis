@@ -298,6 +298,8 @@ exports.softDeleteProduct = function(req, res) {
   var parsedUrl = url.parse(req.originalUrl, true);
   db.Product
         .destroy({
+          force:false,
+          paranoid:true,
           where:{
             id:req.params.id
           }
@@ -337,7 +339,7 @@ exports.getProducts = function(req, res) {
 
   db.Product.findAll({
       where:filters,
-      paranoid: false,
+      paranoid: true,
       raw:true,
       offset: 0,
       limit: 250
