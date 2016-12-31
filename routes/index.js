@@ -330,8 +330,9 @@ exports.viewProduct = function(req, res) {
 
 
 exports.getProducts = function(req, res) {
-  var filters = {type:'book-in-store', deletedAt:null};
-
+  var defaultFilters = {type:'book-in-store', deletedAt:null};
+  var filters = _.mearge(defaultFilters, req.query);
+  console.log(filters);
   db.Product.findAll({
       where:filters,
       paranoid: false,
