@@ -332,7 +332,7 @@ exports.getProducts = function(req, res) {
   var filters = {type:'book-in-store', deletedAt:null};
 
   db.Product.findAll({
-      where:query,
+      where:filters,
       paranoid: false,
       raw:true,
       offset: 0,
