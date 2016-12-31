@@ -302,23 +302,19 @@ exports.softDeleteProduct = function(req, res) {
             variantId:req.params.variantId
           }
         }).then(function(product) {
-          res.json(product);
+          product.set({status:'picked'}).save().then(function() {
+            // Shopify.put('/admin/variants/'+req.params.variantId+'.json',
+            // {
+            //   "variant": {
+            //     "id": parseInt(req.params.variantId),
+            //     "inventory_quantity_adjustment": -1
+            //   }
+            // },
+            // function(err, data, headers) {
+            //     res.json(product)
+            // });
+          });
         });
-        // .findOne({where:{variantId:req.params.variantId}})
-        // .then(function(product) {
-        //   product.set({status:'picked', deletedAt:moment().format('YYYY-MM-DD kk:mm:ss')}).save().then(function() {
-        //     Shopify.put('/admin/variants/'+req.params.variantId+'.json',
-        //     {
-        //       "variant": {
-        //         "id": parseInt(req.params.variantId),
-        //         "inventory_quantity_adjustment": -1
-        //       }
-        //     },
-        //     function(err, data, headers) {
-        //         res.json(product)
-        //     });
-        //   });
-        // });
 };
 
 exports.viewProduct = function(req, res) {
@@ -335,7 +331,7 @@ exports.viewProduct = function(req, res) {
 
 
 exports.getProducts = function(req, res) {
-  var filters = {type:'book-in-store', deletedAt:null};
+  var filters = {type:'book-in-store'};
 
   db.Product.findAll({
       where:filters,
