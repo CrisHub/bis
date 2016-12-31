@@ -301,6 +301,7 @@ exports.softDeleteProduct = function(req, res) {
         .then(function(product) {
           product.set({status:'picked', deletedAt:moment().format('YYYY-MM-DD kk:mm:ss')}).save().then(function() {
             console.log(product.dataValues.variantId);
+            res.json(product);
             // Shopify.put('/admin/variants/'+product.dataValues.variantId+'.json',
             // {
             //   "variant": {
