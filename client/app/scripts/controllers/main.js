@@ -61,10 +61,10 @@ angular.module('sbAdminApp')
   			alertify.error(response);
   		});
   	};
-  	$scope.getFiltered = function(type) {
-  		var query = {type:type}
+  	$scope.getFiltered = function(status) {
+  		var query = {status:type};
   		$http.get('/products?'+srz(query)).then(function(response) {
-  			
+  			console.log(response);
   		});
   	}
   });
