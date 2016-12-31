@@ -331,8 +331,8 @@ exports.viewProduct = function(req, res) {
 
 exports.getProducts = function(req, res) {
   var defaultFilters = {type:'book-in-store', deletedAt:null};
-  var filters = _.merge(defaultFilters, req.query);
-  console.log(filters);
+  // var filters = _.merge(defaultFilters, req.query);
+  console.log(defaultFilters);
   db.Product.findAll({
       where:filters,
       paranoid: false,
