@@ -297,26 +297,25 @@ exports.softDeleteProduct = function(req, res) {
   setShopify(req, res);
   var parsedUrl = url.parse(req.originalUrl, true);
   db.Product
-        .destroy({
-          force:false,
-          paranoid:true,
+        .findOne({
           where:{
             id:req.params.id
           }
         }).then(function(product) {
-          product.set({status:'picked'}).save().then(function() {
-                res.json(product)
-
-            // Shopify.put('/admin/variants/'+req.params.variantId+'.json',
-            // {
-            //   "variant": {
-            //     "id": parseInt(req.params.variantId),
-            //     "inventory_quantity_adjustment": -1
-            //   }
-            // },
-            // function(err, data, headers) {
-            //     res.json(product)
-            // });
+          product.destroy().then(function() {
+            product.set({status:'picked'}).save().then(function() {
+              res.json(product);
+              // Shopify.put('/admin/variants/'+req.params.variantId+'.json',
+              // {
+              //   "variant": {
+              //     "id": parseInt(req.params.variantId),
+              //     "inventory_quantity_adjustment": -1
+              //   }
+              // },
+              // function(err, data, headers) {
+              //     res.json(product)
+              // });
+            });
           });
         });
 };
