@@ -36,7 +36,7 @@ angular.module('sbAdminApp')
   			alertify.error(response);
   		});
   	};
-
+    console.log('aaaaa');
   	$scope.pickedUp = function(id) {
   		$http.get('/soft-delete-product/'+id).then(function(response) {
   			angular.forEach($scope.products, function(p, idx) {
@@ -64,7 +64,7 @@ angular.module('sbAdminApp')
   	$scope.getFiltered = function(status) {
   		var query = {type:'book-in-store', status:status};
       console.log(query);
-  		$http({method:'GET', url:'/products',paramiters:query }).then(function(response) {
+  		$http({method:'GET', url:'/products', paramiters:query }).then(function(response) {
   			console.log(response);
   		});
   	}
