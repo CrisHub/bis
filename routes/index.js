@@ -334,6 +334,9 @@ exports.getProducts = function(req, res) {
   if (filters.status != 'picked') {
     filters.deletedAt = null;
   }
+  if (filters.status == 'null'){
+    filters.status = null;
+  }
   db.Product.findAll({
       where:filters,
       paranoid: false,
