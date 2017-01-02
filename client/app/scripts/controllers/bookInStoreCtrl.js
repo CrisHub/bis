@@ -55,8 +55,8 @@ angular.module('sbAdminApp')
   		});
   	};
   	$scope.getFiltered = function(status) {
-      $scope.currentFilter = status
-  		var query = {type:'book-in-store', status:status};
+      $scope.currentFilter = status.label;
+  		var query = {type:'book-in-store', status:status.value};
   		$http({method:'GET', url:'/products', params:query }).then(function(response) {
   			$scope.products = response.data;
   		});
