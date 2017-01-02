@@ -59,7 +59,7 @@ angular.module('sbAdminApp')
       $scope.currentFilter = status.label;
   		var query = {type:'book-in-store', status:status.value};
       if (!status.value){
-        delete status.value;
+        delete status;
       }
   		$http({method:'GET', url:'/products', params:query }).then(function(response) {
   			$scope.products = response.data;
