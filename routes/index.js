@@ -335,7 +335,6 @@ exports.getProducts = function(req, res) {
   //   filters.deletedAt = null;
   // }
   var _buildStatus =  function(filters) {
-    console.log(filters);
     var status = filters.status;
     return status.split(',');
   };
@@ -343,7 +342,7 @@ exports.getProducts = function(req, res) {
       where:{
         type:filters.type,
         status:{
-          $in:_buildStatus(),
+          $in:_buildStatus(filters),
         }
       },
       paranoid: false,
