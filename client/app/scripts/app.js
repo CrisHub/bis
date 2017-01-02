@@ -97,7 +97,7 @@ angular
             return $http({
               method: 'GET',
               url: '/products',
-              params: {type:'type=book-in-store'}
+              params: {type:'book-in-store',status:'email-sent'}
             }).then(function successCallback(response) {
                 return response;
                 // this callback will be called asynchronously
