@@ -52,7 +52,7 @@ angular.module('sbAdminApp')
   	$scope.getFiltered = function(status) {
   		var query = {type:'book-in-store', status:status};
       console.log(query);
-  		$http({method:'GET', url:'/products', params:_buildFilters(query) }).then(function(response) {
+  		$http({method:'GET', url:'/products', params:query }).then(function(response) {
   			console.log(response);
   		});
   	}
