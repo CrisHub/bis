@@ -117,6 +117,7 @@ angular
               files:[
               'app/scripts/controllers/main.js',
               'app/scripts/controllers/preorderedProducts.js',
+              'app/scripts/controllers/bookInStoreCtrl.js',
               'app/scripts/directives/notifications/notifications.js',
               ]
             })
