@@ -8,13 +8,13 @@
  */
 angular.module('sbAdminApp')
   .controller('bookInStoreCtrl', function($scope, $position, $http, resolveData, alertify) {
-    $scope.currentFilter = $scope.activeFilters[1];
     $scope.activeFilters = [
       {value:'all',label:'All'},
       {value:'email-sent',label:'Email sent'},
       {value:'picked', label:'Archived'},
       {value:'null', label:'Email not sent'}
     ];
+    $scope.currentFilter = $scope.activeFilters[1];
   	$scope.products = resolveData.data;
   	$scope.pageTitle = 'Booked products';
   	alertify.logPosition("top left");
