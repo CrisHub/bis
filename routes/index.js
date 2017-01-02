@@ -340,7 +340,7 @@ exports.getProducts = function(req, res) {
     delete filters.status;
   }
   
-  if (filters.status != 'picked' || filters.status != 'all') {
+  if (filters.status != 'picked' && filters.status != 'all') {
     filters.deletedAt = null;
   }
 
