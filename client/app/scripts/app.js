@@ -85,7 +85,7 @@ angular
               name:'sbAdminApp',
               files:[
               'app/scripts/controllers/main.js',
-              'app/scripts/controllers/bookInStoreCtrl.js',
+              'app/scripts/controllers/bookInStoreCtrl.js?aaa',
               'app/scripts/directives/timeline/timeline.js',
               'app/scripts/directives/notifications/notifications.js',
               'app/scripts/directives/chat/chat.js',
