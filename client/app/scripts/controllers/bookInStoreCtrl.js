@@ -8,6 +8,7 @@
  */
 angular.module('sbAdminApp')
   .controller('bookInStoreCtrl', function($scope, $position, $http, resolveData, alertify) {
+    $scope.currentFilter = 'All';
     $scope.activeFilters = [
       {value:'',label:'All'},
       {value:'email-sent',label:'Email sent'},
@@ -57,6 +58,9 @@ angular.module('sbAdminApp')
   	$scope.getFiltered = function(status) {
       $scope.currentFilter = status.label;
   		var query = {type:'book-in-store', status:status.value};
+      if (!status.value){
+        delete status.value;
+      }
   		$http({method:'GET', url:'/products', params:query }).then(function(response) {
   			$scope.products = response.data;
   		});
