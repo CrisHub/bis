@@ -16,7 +16,7 @@ angular.module('sbAdminApp')
     ];
     $scope.currentFilter = $scope.activeFilters[1];
   	$scope.products = resolveData.data;
-  	$scope.pageTitle = 'Booked products';
+  	$scope.pageTitle = 'Preordered products';
   	alertify.logPosition("top left");
   	
   	$scope.getFiltered = function(status) {
