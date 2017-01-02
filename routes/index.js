@@ -334,11 +334,11 @@ exports.getProducts = function(req, res) {
   // if (filters.status != 'picked') {
   //   filters.deletedAt = null;
   // }
-  console.log(filters);
   db.Product.findAll({
       where:{
+        type:filters.type,
         status:{
-          $in:[],
+          $in:[filters.status],
         }
       },
       paranoid: false,
