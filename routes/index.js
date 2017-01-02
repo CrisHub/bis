@@ -338,7 +338,7 @@ exports.getProducts = function(req, res) {
       where:{
         type:filters.type,
         status:{
-          $in:[filters.status],
+          $in:filters.status,
         }
       },
       paranoid: false,
