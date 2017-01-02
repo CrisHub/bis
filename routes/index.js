@@ -336,6 +336,7 @@ exports.getProducts = function(req, res) {
   // }
   var _buildStatus =  function(filters) {
     var status = filters.status;
+    console.log(status.split(','));
     return status.split(',');
   };
   db.Product.findAll({
