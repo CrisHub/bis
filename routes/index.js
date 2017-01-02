@@ -335,7 +335,7 @@ exports.getProducts = function(req, res) {
     filters.deletedAt = null;
   }
   if (filters.status == 'null'){
-    // filters.status = null;
+    filters.status = null;
   }
   db.Product.findAll({
       where:filters,
