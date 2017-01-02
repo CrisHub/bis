@@ -36,7 +36,7 @@
                                     <th>Client</th>
                                     <th>Store</th>
                                     <th>Comments</th>
-                                    <th>Actions</th>
+                                    <!-- <th>Actions</th> -->
                                 </tr>
                             </thead>
                             <tbody>
@@ -69,8 +69,7 @@
                                         <div>{{product.comments}}</div>
                                         <div style="margin-top:5px;">Rezervat in data de:<em><strong>{{product.createdAt | date:'dd/MM/yyyy'}}</strong></em></div>
                                     </td>
-                                    <th style="width: 140px;">
-                                    <!-- Split button -->
+                                    <!-- <th style="width: 140px;">
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-default">
                                                 <span>Actions</span>
@@ -82,8 +81,8 @@
                                             <ul class="dropdown-menu" style="left:-65px;" ng-style="{ top: $last ? 'auto' : '0px', bottom: $last ? '-30px' : 'auto' }">
                                                 <li><a ng-click="unpicked(product.id)" style="cursor: pointer;">Unpiked/Delete</a></li>
                                             </ul>
-                                            </div>
-                                        </th>
+                                        </div>
+                                    </th> -->
                                 </tr>
                             </tbody>
                         </table>
