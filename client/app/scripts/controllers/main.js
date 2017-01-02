@@ -7,7 +7,7 @@
  * Controller of the sbAdminApp
  */
 angular.module('sbAdminApp')
-  .controller('bookInStoreCtrl', function($scope, $position, $http, resolveData, alertify) {
+  .controller('MainCtrl', function($scope, $position, $http, resolveData, alertify) {
   	$scope.currentFilter = 'All';
   	$scope.products = resolveData.data;
   	$scope.pageTitle = 'Booked products';
