@@ -75,10 +75,10 @@ angular
             }
         }
     })
-      .state('dashboard.booked-products',{
-        url:'/home',
+      .state('dashboard.bookedProducts',{
+        url:'/booked-products',
         controller:'bookInStoreCtrl',
-        templateUrl:'app/views/dashboard/home.html',
+        templateUrl:'app/views/dashboard/booked-products.html',
         resolve: {
           loadMyFiles:function($ocLazyLoad) {
             return $ocLazyLoad.load({
