@@ -335,7 +335,7 @@ exports.getProducts = function(req, res) {
     filters.deletedAt = null;
   }
   db.Product.findAll({
-      attributes:{type:'book-in-store', status:'email-sent,picked'},
+      attributes:filters,
       paranoid: false,
       raw:true,
       offset: 0,
