@@ -336,7 +336,11 @@ exports.getProducts = function(req, res) {
   // }
   console.log(filters);
   db.Product.findAll({
-      where:filters,
+      where:{
+        status:{
+          $in:[],
+        }
+      },
       paranoid: false,
       raw:true,
       offset: 0,
