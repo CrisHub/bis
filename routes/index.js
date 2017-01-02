@@ -334,6 +334,7 @@ exports.getProducts = function(req, res) {
   // if (filters.status != 'picked') {
   //   filters.deletedAt = null;
   // }
+  console.log(filters);
   db.Product.findAll({
       attributes:filters,
       paranoid: false,
