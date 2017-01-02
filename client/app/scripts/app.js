@@ -86,10 +86,7 @@ angular
               files:[
               'app/scripts/controllers/main.js',
               'app/scripts/controllers/bookInStoreCtrl.js',
-              'app/scripts/directives/timeline/timeline.js',
               'app/scripts/directives/notifications/notifications.js',
-              'app/scripts/directives/chat/chat.js',
-              'app/scripts/directives/dashboard/stats/stats.js'
               ]
             })
           },
@@ -109,66 +106,37 @@ angular
           }
         }
       })
-      .state('dashboard.form',{
-        templateUrl:'app/views/form.html',
-        url:'/form'
-    })
-      .state('dashboard.blank',{
-        templateUrl:'app/views/pages/blank.html',
-        url:'/blank'
-    })
-      .state('login',{
-        templateUrl:'app/views/pages/login.html',
-        url:'/login'
-    })
-      .state('dashboard.chart',{
-        templateUrl:'app/views/chart.html',
-        url:'/chart',
-        controller:'ChartCtrl',
+      .state('dashboard.preorderedProducts',{
+        url:'/preordered-products',
+        controller:'bookInStoreCtrl',
+        templateUrl:'app/views/dashboard/preordered-products.html',
         resolve: {
-          loadMyFile:function($ocLazyLoad) {
+          loadMyFiles:function($ocLazyLoad) {
             return $ocLazyLoad.load({
-              name:'chart.js',
+              name:'sbAdminApp',
               files:[
-                'bc/angular-chart.js/angular-chart.min.js',
-                'bc/angular-chart.js/angular-chart.css'
+              'app/scripts/controllers/main.js',
+              'app/scripts/controllers/preorderedProducts.js',
+              'app/scripts/directives/notifications/notifications.js',
               ]
-            }),
-            $ocLazyLoad.load({
-                name:'sbAdminApp',
-                files:['app/scripts/controllers/chartContoller.js']
             })
+          },
+          resolveData: function($http) {
+            return $http({
+              method: 'GET',
+              url: '/preorderd_products',
+              params: {type:'preorder'}
+            }).then(function successCallback(response) {
+                return response;
+                // this callback will be called asynchronously
+                // when the response is available
+              }, function errorCallback(response) {
+                // called asynchronously if an error occurs
+                // or server returns response with an error status.
+              });
           }
         }
-    })
-      .state('dashboard.table',{
-        templateUrl:'app/views/table.html',
-        url:'/table'
-    })
-      .state('dashboard.panels-wells',{
-          templateUrl:'app/views/ui-elements/panels-wells.html',
-          url:'/panels-wells'
-      })
-      .state('dashboard.buttons',{
-        templateUrl:'app/views/ui-elements/buttons.html',
-        url:'/buttons'
-    })
-      .state('dashboard.notifications',{
-        templateUrl:'app/views/ui-elements/notifications.html',
-        url:'/notifications'
-    })
-      .state('dashboard.typography',{
-       templateUrl:'app/views/ui-elements/typography.html',
-       url:'/typography'
-   })
-      .state('dashboard.icons',{
-       templateUrl:'app/views/ui-elements/icons.html',
-       url:'/icons'
-   })
-      .state('dashboard.grid',{
-       templateUrl:'app/views/ui-elements/grid.html',
-       url:'/grid'
-   })
+      });
   }]);
 
     

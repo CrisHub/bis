@@ -272,14 +272,7 @@ exports.preorderProduct = function(req, res) {
       limit: 250
     })
     .then(function(products) {
-      res.render('app_view', {
-          title: 'Configuration',
-          apiKey: app.nconf.get('oauth:api_key'),
-          shopUrl: req.session.shopUrl,
-          body: 'Database configured',
-          type:'preorder',
-          products:products
-      });
+      res.json(products);
     });
 };
 
