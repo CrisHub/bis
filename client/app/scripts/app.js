@@ -77,7 +77,7 @@ angular
     })
       .state('dashboard.home',{
         url:'/home',
-        controller:'MainCtrl',
+        controller:'bookInStoreCtrl',
         templateUrl:'app/views/dashboard/home.html',
         resolve: {
           loadMyFiles:function($ocLazyLoad) {
@@ -85,6 +85,7 @@ angular
               name:'sbAdminApp',
               files:[
               'app/scripts/controllers/main.js',
+              'app/scripts/controllers/bookInStoreCtrl.js',
               'app/scripts/directives/timeline/timeline.js',
               'app/scripts/directives/notifications/notifications.js',
               'app/scripts/directives/chat/chat.js',
