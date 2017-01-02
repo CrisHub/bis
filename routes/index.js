@@ -342,7 +342,10 @@ exports.getProducts = function(req, res) {
       where:{
         type:filters.type, 
         status:{
-          $and:[{status:'picked'},{status:'email-sent'}]
+          $and:{
+            status:'picked',
+            status:'email-sent'
+          }
         }
       },
       paranoid: false,
