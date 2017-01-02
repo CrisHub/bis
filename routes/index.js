@@ -341,7 +341,7 @@ exports.getProducts = function(req, res) {
   }
 
   if (filters.status == 'all') {
-    filters.status = null;
+    delete filters.status;
   }
 
   db.Product.findAll({
