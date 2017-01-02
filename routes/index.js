@@ -331,12 +331,14 @@ exports.viewProduct = function(req, res) {
 
 exports.getProducts = function(req, res) {
   var filters = req.query;
+  
   if (filters.status != 'picked' || filters.status != 'all') {
     filters.deletedAt = null;
   }
   if (filters.status == 'null'){
     filters.status = null;
   }
+
   db.Product.findAll({
       where:filters,
       paranoid: false,
