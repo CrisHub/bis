@@ -340,9 +340,9 @@ exports.getProducts = function(req, res) {
   };
   db.Product.findAll({
       where:{
-        type:filters.type,
+        type:filters.type, 
         status:{
-          $contains:['picked','email-sent']
+          $and:[{status:'picked'},{status:'email-sent'}]
         }
       },
       paranoid: false,
