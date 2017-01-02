@@ -19,7 +19,7 @@ angular.module('sbAdminApp')
   	$scope.getFiltered = function(status) {
       $scope.currentFilter = status;
   		var query = {type:'preorder', status:status.value};
-  		$http({method:'GET', url:'/preordered_products', params:query }).then(function(response) {
+  		$http({method:'GET', url:'/preorderd_products', params:query }).then(function(response) {
   			$scope.products = response.data;
   		});
   	}
