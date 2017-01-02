@@ -331,9 +331,12 @@ exports.viewProduct = function(req, res) {
 
 exports.getProducts = function(req, res) {
   var filters = req.query;
-  
-  if (filters.status != 'picked' || filters.status != 'all') {
+
+  if (filters.status != 'picked') {
     filters.deletedAt = null;
+  }
+  if (filters.status == 'all') {
+    filters.status = null;
   }
   if (filters.status == 'null'){
     filters.status = null;
