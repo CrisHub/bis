@@ -332,16 +332,16 @@ exports.viewProduct = function(req, res) {
 exports.getProducts = function(req, res) {
   var filters = req.query;
 
-  if (filters.status != 'picked' || filters.status != 'all') {
-    filters.deletedAt = null;
-  }
-
   if (filters.status == 'null'){
     filters.status = null;
   }
 
   if (filters.status == 'all') {
     delete filters.status;
+  }
+  
+  if (filters.status != 'picked' || filters.status != 'all') {
+    filters.deletedAt = null;
   }
 
   db.Product.findAll({
