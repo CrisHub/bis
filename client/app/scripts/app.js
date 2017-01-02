@@ -22,7 +22,7 @@ angular
       events:true,
     });
 
-    $urlRouterProvider.otherwise('/dashboard/home');
+    $urlRouterProvider.otherwise('/dashboard/booked-products');
 
     $stateProvider
       .state('dashboard', {
@@ -75,7 +75,7 @@ angular
             }
         }
     })
-      .state('dashboard.home',{
+      .state('dashboard.booked-products',{
         url:'/home',
         controller:'bookInStoreCtrl',
         templateUrl:'app/views/dashboard/home.html',
@@ -85,7 +85,7 @@ angular
               name:'sbAdminApp',
               files:[
               'app/scripts/controllers/main.js',
-              'app/scripts/controllers/bookInStoreCtrl.js?aaa',
+              'app/scripts/controllers/bookInStoreCtrl.js',
               'app/scripts/directives/timeline/timeline.js',
               'app/scripts/directives/notifications/notifications.js',
               'app/scripts/directives/chat/chat.js',
