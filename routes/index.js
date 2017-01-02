@@ -336,7 +336,7 @@ exports.getProducts = function(req, res) {
   // }
   console.log(filters);
   db.Product.findAll({
-      attributes:filters,
+      where:filters,
       paranoid: false,
       raw:true,
       offset: 0,
