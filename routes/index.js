@@ -342,7 +342,7 @@ exports.getProducts = function(req, res) {
       where:{
         type:filters.type,
         status:{
-          $in:['picked','email-sent'],
+          $contains:['picked','email-sent']
         }
       },
       paranoid: false,
