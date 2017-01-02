@@ -9,10 +9,13 @@
                     <span class="sr-only">Toggle Dropdown</span>
                   </button>
                   <ul class="dropdown-menu">
-                    <li><a ng-click="getFiltered()">All(active)</a></li>
+                    <li ng-repeat="filter in activeFilters">
+                        <a ng-click="getFiltered(filter.value)">{{filter.label}}</a>
+                    </li>
+                    <!-- <li><a ng-click="getFiltered()">All(active)</a></li>
                     <li><a ng-click="getFiltered('picked')">Archived</a></li>
-                    <li><a ng-click="getFiltered('email-sent')">Confirmed</a></li>
-                    <li><a ng-click="getFiltered('null')">Not confirmed</a></li>
+                    <li><a ng-click="getFiltered('email-sent')">Email sent</a></li>
+                    <li><a ng-click="getFiltered('null')">Email not sent</a></li> -->
                   </ul>
                 </div>
             </h1>

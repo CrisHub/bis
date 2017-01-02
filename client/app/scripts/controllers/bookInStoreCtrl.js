@@ -8,7 +8,12 @@
  */
 angular.module('sbAdminApp')
   .controller('bookInStoreCtrl', function($scope, $position, $http, resolveData, alertify) {
-  	$scope.currentFilter = 'All';
+    $scope.activeFilters = [
+      {value:'',label:'All'},
+      {value:'email-sent',label:'Email sent'},
+      {value:'picked', label:'Archived'},
+      {value:'null', label:'Email not sent'}
+    ];
   	$scope.products = resolveData.data;
   	$scope.pageTitle = 'Booked products';
   	alertify.logPosition("top left");
@@ -50,6 +55,7 @@ angular.module('sbAdminApp')
   		});
   	};
   	$scope.getFiltered = function(status) {
+      $scope.currentFilter = status
   		var query = {type:'book-in-store', status:status};
   		$http({method:'GET', url:'/products', params:query }).then(function(response) {
   			$scope.products = response.data;
