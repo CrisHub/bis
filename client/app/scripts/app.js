@@ -96,7 +96,7 @@ angular
           resolveData: function($http) {
             return $http({
               method: 'GET',
-              url: '/products?type=book-in-store'
+              url: '/products?type=book-in-store&status=email-sent,picked'
             }).then(function successCallback(response) {
                 return response;
                 // this callback will be called asynchronously
