@@ -335,6 +335,7 @@ exports.getProducts = function(req, res) {
   //   filters.deletedAt = null;
   // }
   var _buildStatus =  function(filters) {
+    console.log(filters);
     var status = filters.status;
     return status.split(',');
   };
