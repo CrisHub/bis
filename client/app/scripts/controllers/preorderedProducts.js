@@ -9,10 +9,7 @@
 angular.module('sbAdminApp')
   .controller('preorderedProducts', function($scope, $position, $http, resolveData, alertify) {
     $scope.activeFilters = [
-      {value:'all',label:'All'},
-      {value:'email-sent',label:'Email sent'},
-      {value:'picked', label:'Archived'},
-      {value:'null', label:'Email not sent'}
+      {value:'all',label:'All'}
     ];
     $scope.currentFilter = $scope.activeFilters[1];
   	$scope.products = resolveData.data;
