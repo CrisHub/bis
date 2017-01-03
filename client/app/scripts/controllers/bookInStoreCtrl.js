@@ -61,5 +61,9 @@ angular.module('sbAdminApp')
   		$http({method:'GET', url:'/products', params:query }).then(function(response) {
   			$scope.products = response.data;
   		});
-  	}
+  	};
+    $scope.orderBy = function(propertyName) {
+      $scope.reverse = !$scope.reverse;
+      $scope.propertyName = propertyName;
+    };
   });
