@@ -36,7 +36,7 @@
                                     <th>Client</th>
                                     <th>Address</th>
                                     <th>Comments</th>
-                                    <!-- <th>Actions</th> -->
+                                    <th>Actions</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -69,7 +69,7 @@
                                         <div>{{product.comments}}</div>
                                         <div style="margin-top:5px;">Precomanda in data de:<em><strong>{{product.createdAt | date:'dd/MM/yyyy'}}</strong></em></div>
                                     </td>
-                                    <!-- <th style="width: 140px;">
+                                    <th style="width: 140px;">
                                         <div class="btn-group">
                                             <button type="button" class="btn btn-default">
                                                 <span>Actions</span>
@@ -79,11 +79,10 @@
                                                 <span class="sr-only">Toggle Dropdown</span>
                                             </button>
                                             <ul class="dropdown-menu" style="left:-65px;" ng-style="{ top: $last ? 'auto' : '0px', bottom: $last ? '-30px' : 'auto' }">
-                                                <li><a ng-click="pickedUp(product.id)" style="cursor: pointer;">Picked</a></li>
-                                                <li><a ng-click="unpicked(product.id)" style="cursor: pointer;">Unpiked/Delete</a></li>
+                                                <li><a ng-click="unpicked(product.id)" style="cursor: pointer;">Delete</a></li>
                                             </ul>
                                         </div>
-                                    </th> -->
+                                    </th>
                                 </tr>
                             </tbody>
                         </table>
