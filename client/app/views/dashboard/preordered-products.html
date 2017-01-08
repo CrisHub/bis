@@ -79,6 +79,7 @@
                                                 <span class="sr-only">Toggle Dropdown</span>
                                             </button>
                                             <ul class="dropdown-menu" style="left:-65px;" ng-style="{ top: $last ? 'auto' : '0px', bottom: $last ? '-30px' : 'auto' }">
+                                                <li><a ng-click="pickedUp(product.id)" style="cursor: pointer;">Picked</a></li>
                                                 <li><a ng-click="unpicked(product.id)" style="cursor: pointer;">Unpiked/Delete</a></li>
                                             </ul>
                                         </div>
