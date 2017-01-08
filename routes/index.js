@@ -281,8 +281,8 @@ exports.deleteProduct = function(req, res) {
   var parsedUrl = url.parse(req.originalUrl, true);
     db.Product
     .destroy({where:{id:req.params.id}, force:true})
-    .then(function(product) {
-      res.json(product);
+    .then(function(affectedRows) {
+      res.json(affectedRows);
     });
 };
 
