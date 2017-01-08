@@ -282,7 +282,7 @@ exports.deleteProduct = function(req, res) {
     db.Product
     .destroy({where:{id:req.params.id}, force:true})
     .then(function(product) {
-      res.redirect("/render_app");
+      res.json(product);
     });
 };
 
