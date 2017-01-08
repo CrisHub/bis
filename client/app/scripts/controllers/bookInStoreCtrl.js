@@ -62,7 +62,8 @@ angular.module('sbAdminApp')
   			$scope.products = response.data;
   		});
   	};
-    $scope.orderBy = function(propertyName) {
+    $scope.reverse = false;
+    $scope.sortBy = function(propertyName) {
       $scope.reverse = !$scope.reverse;
       $scope.propertyName = propertyName;
     };
