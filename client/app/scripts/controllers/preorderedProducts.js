@@ -26,7 +26,6 @@ angular.module('sbAdminApp')
 
     $scope.pickedUp = function(id) {
       $http.get('/soft-delete-product/'+id).then(function(response) {
-        console.log(response);
         angular.forEach($scope.products, function(p, idx) {
           if (p.id === response.data.id) {
             $scope.products.splice(idx, 1);
@@ -40,6 +39,7 @@ angular.module('sbAdminApp')
 
     $scope.unpicked = function(id) {
       $http.get('/delete-product/'+id).then(function(response) {
+        colsole.log(response);
         angular.forEach($scope.products, function(p, idx) {
           if (p.id === response.data.id) {
             $scope.products.splice(idx, 1);
