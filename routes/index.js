@@ -90,8 +90,9 @@ exports.renderApp = function(req, res){
 exports.bookProduct = function(req, res) {
     setShopify(req, res);
     var parsedUrl = url.parse(req.originalUrl, true);
+    console.log(req.body);
     db.Product
-    .findOrCreate({where: req.body})
+    .findOrCreate({where: {email:req.body.email,variantId:req.body.variantId}})
     .spread(function(product, created) {
       var product = product.get({plain: true});
         res.json({product:product,created:created, email:'success'});
