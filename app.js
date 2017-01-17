@@ -62,8 +62,8 @@ var corsOptions = {
 
 //configure routes
 app.get('/', routes.index);
-app.get('/auth_app', appAuth.initAuth);
-app.get('/escape_iframe', appAuth.escapeIframe);
+app.get('/auth_app', cors(corsOptions), appAuth.initAuth);
+app.get('/escape_iframe', cors(corsOptions), appAuth.escapeIframe);
 app.get('/auth_code', appAuth.getCode);
 app.get('/auth_token', appAuth.getAccessToken);
 app.get('/render_app', routes.renderApp);
