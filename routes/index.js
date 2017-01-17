@@ -13,12 +13,12 @@ var app = require('../app'),
     shopifyAPI  = require('shopify-node-api'),
     fs = require('fs'),
     moment = require('moment'),
-    _ = require('lodash'),
-    Logger = require('le_node');
+    _ = require('lodash');
+    // Logger = require('le_node');
 
-var log = new Logger({
-  token:process.env.loggerToken
-});
+// var log = new Logger({
+//   token:process.env.loggerToken
+// });
 var mandrill = require('mandrill-api/mandrill');
 var mandrill_client = new mandrill.Mandrill(process.env.mandrill_key);
 
@@ -251,7 +251,7 @@ exports.bookConfirmation = function(req, res) {
           var sendObject = {"template_name": template_name, "template_content": template_content, "message": message, "async": async};
 
           mandrill_client.messages.sendTemplate(sendObject, function(result) {
-              log.log("debug", {email:"sent", customerEmail:product.customerEmail, customerLastName:product.customerLastName, customerFirstName:product.customerFirstName});
+              // log.log("debug", {email:"sent", customerEmail:product.customerEmail, customerLastName:product.customerLastName, customerFirstName:product.customerFirstName});
               // res.redirect("/render_app");
               res.json(product);
 
