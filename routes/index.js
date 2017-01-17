@@ -91,7 +91,7 @@ exports.bookProduct = function(req, res) {
     var parsedUrl = url.parse(req.originalUrl, true);
     console.log(req.body);
     db.Product
-    .findOrCreate({where: {customerEmail:req.body.customerEmail,variantId:req.body.variantId}})
+    .findOrCreate({where: {customerEmail:req.body.customerEmail,variantId:req.body.variantId}, defaults:req.body})
     .spread(function(product, created) {
       var product = product.get({plain: true});
         res.json({product:product,created:created, email:'success'});
