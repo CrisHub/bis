@@ -25,7 +25,12 @@ angular.module('sbAdminApp')
 					$scope.products[idx] = response.data;
 				}
 			});
-  			alertify.success('Email successfully sent!');
+        if (status != 'error') {
+          alertify.success('Email successfully sent!');
+        } else {
+          alertify.error(response.message);
+        }
+  			
   		}, function(response) {
   			alertify.error(response);
   		});
