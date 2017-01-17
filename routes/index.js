@@ -26,7 +26,6 @@ var Shopify;
 
 var setShopify = function(req, res) {
     var parsedUrl = url.parse(req.originalUrl, true);
-    // req.session.oauth_access_token = 'c70a3aa425c46ec2e70067f1f6b36b10';
     // req.session.shopUrl = 'https://caramel-dev.myshopify.com';
     //In case server stops and starts again, check if we need the auth token again
     if (!req.session.oauth_access_token) {
@@ -37,6 +36,7 @@ var setShopify = function(req, res) {
         res.redirect('/auth_app');
     }
     else {
+      console.log(req.session.oauth_access_token);
         //Using the shopify node.js library to make the calls to Shopify. This var is the configuration object.
         Shopify = new shopifyAPI({
             shop: req.session.shopUrl.split('//')[1],
