@@ -7,7 +7,7 @@
  * Controller of the sbAdminApp
  */
 angular.module('sbAdminApp')
-  .controller('bookInStoreCtrl', function($scope, $position, $http, resolveData, alertify) {
+  .controller('bookInStoreCtrl', function($scope, $position, $http, $state, resolveData, alertify) {
     $scope.activeFilters = [
       {value:'all',label:'All'},
       {value:'email-sent',label:'Email sent'},
@@ -22,6 +22,9 @@ angular.module('sbAdminApp')
   		$http.get('/book-confirmation/'+id).then(function(response) {
   			
         if (response.status != 'error') {
+          if ($scope.products.length == 1) {
+            $state.go('dashboard.bookedProducts');
+          }
           angular.forEach($scope.products, function(p, idx) {
             console.log(p.id+'----'+response.data.id);
             if (p.id === response.data.id){
