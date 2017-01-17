@@ -213,7 +213,8 @@ exports.bookConfirmation = function(req, res) {
                         //   "email": "oana.elena.blaga@gmail.com",
                         //   "name": product.customerFirstName+' '+product.customerLastName,
                         //   "type": "bcc"
-                        // }],
+                        // }
+                        ],
                   "merge": true,
                   "merge_language": "mailchimp",
                   "merge_vars": [{
