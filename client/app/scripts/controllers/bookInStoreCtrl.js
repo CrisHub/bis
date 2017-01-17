@@ -23,6 +23,7 @@ angular.module('sbAdminApp')
   			
         if (response.status != 'error') {
           angular.forEach($scope.products, function(p, idx) {
+            console.log(p.id+'----'+response.data.id);
             if (p.id === response.data.id){
               $scope.products[idx] = response.data;
             }
