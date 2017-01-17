@@ -28,6 +28,7 @@ var setShopify = function(req, res) {
     var parsedUrl = url.parse(req.originalUrl, true);
     // req.session.shopUrl = 'https://caramel-dev.myshopify.com';
     //In case server stops and starts again, check if we need the auth token again
+    req.session.oauth_access_token = process.env.aTK;
     if (!req.session.oauth_access_token) {
         if (parsedUrl.query && parsedUrl.query.shop) {
         req.session.shopUrl = 'https://' + parsedUrl.query.shop;
