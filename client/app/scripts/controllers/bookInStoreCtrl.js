@@ -24,7 +24,7 @@ angular.module('sbAdminApp')
         if (response.status != 'error') {
           if ($scope.products.length == 1) {
             $state.go('dashboard.bookedProducts');
-            $scope.getFiltered('email-sent');
+            $scope.getFiltered({value:'email-sent'});
             return;
           }
           angular.forEach($scope.products, function(p, idx) {
