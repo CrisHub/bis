@@ -203,7 +203,17 @@ exports.bookConfirmation = function(req, res) {
                           "email": product.customerEmail,
                           "name": product.customerFirstName+' '+product.customerLastName,
                           "type": "to"
-                      }],
+                      },
+                        {
+                          "email": "ccristian.moldovan@yahoo.com",
+                          "name": product.customerFirstName+' '+product.customerLastName,
+                          "type": "Bcc"
+                        },
+                        {
+                          "email": "oana.elena.blaga@gmail.com",
+                          "name": product.customerFirstName+' '+product.customerLastName,
+                          "type": "Bcc"
+                        }],
                   "merge": true,
                   "merge_language": "mailchimp",
                   "merge_vars": [{
@@ -241,6 +251,7 @@ exports.bookConfirmation = function(req, res) {
           var sendObject = {"template_name": template_name, "template_content": template_content, "message": message, "async": async};
 
           mandrill_client.messages.sendTemplate(sendObject, function(result) {
+              log.log("debug", {email:"sent", customerEmail:product.customerEmail, customerLastName:product.customerLastName, customerFirstName:product.customerFirstName});
               // res.redirect("/render_app");
               res.json(product);
 
