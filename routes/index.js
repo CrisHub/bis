@@ -13,7 +13,12 @@ var app = require('../app'),
     shopifyAPI  = require('shopify-node-api'),
     fs = require('fs'),
     moment = require('moment'),
-    _ = require('lodash');
+    _ = require('lodash'),
+    Logger = require('le_node');
+
+var log = new Logger({
+  token:process.env.loggerToken
+});
 var mandrill = require('mandrill-api/mandrill');
 var mandrill_client = new mandrill.Mandrill(process.env.mandrill_key);
 
@@ -51,7 +56,6 @@ var setShopify = function(req, res) {
  * redirect to app authorisation.
  */
 exports.index = function(req, res){
-    // req.session.oauth_access_token = 'c70a3aa425c46ec2e70067f1f6b36b10';
     if (!req.session.oauth_access_token) {
         var parsedUrl = url.parse(req.originalUrl, true);
         if (parsedUrl.query && parsedUrl.query.shop) {
@@ -89,78 +93,77 @@ exports.bookProduct = function(req, res) {
     .findOrCreate({where: req.body})
     .spread(function(product, created) {
       var product = product.get({plain: true});
-      if (created) {
         res.json({product:product,created:created, email:'success'});
         return;
-      }
-      if (req.body.type == 'book-in-store') {
-          var subject = "Rezervare produs",
-              template_name = "Comanda ta este in curs de rezervare!",
-              template_content = [{
-                "name": "Rezervare produs",
-                "content": "Rezervare produs"
-              }];
-      }
-      if (req.body.type == 'preorder') {
-          var subject = "Precomanda produs",
-              template_name = "Precomanda ta a fost inregistrata cu succes!",
-              template_content = [{
-                "name": "Precomanda produs",
-                "content": "Precomanda produs"
-              }];
-      }
-      if (req.body.type == 'book-confirmation') {
-          var subject = "Rezervare produs: Succes!",
-              template_name = "Comanda ta te asteapta in magazinul Caramel!",
-              template_content = [{
-                "name": "Rezervare produs",
-                "content": "Rezervare produs"
-              }];
-      }
-      var message = {
-              "subject": subject,
-              "from_email": "contact@caramel.ro",
-              "from_name": "Caramel Fashion",
-              "to": [{
-                      "email": product.customerEmail,
-                      "name": product.customerFirstName+' '+product.customerLastName,
-                      "type": "to"
-                  }],
-              "merge": true,
-              "merge_language": "mailchimp",
-              "merge_vars": [{
-                      "rcpt": product.customerEmail,
-                      "vars": [{
-                                "name": "username",
-                                'content':product.customerLastName
-                              }, {
-                                'name': 'storeName',
-                                'content':product.store
-                              }, {
-                                'name': 'pTitle',
-                                'content':product.name
-                              }, {
-                                'name':'pQty',
-                                'content':product.quantity
-                              }, {
-                                'name':'pVariant',
-                                'content':product.variant.split('-')[0]
-                              }, {
-                                'name':'pPrice',
-                                'content':product.variant.split('-')[1]
-                              }, {
-                                'name':'pLink',
-                                'content':product.link
-                              }]
-                  }],
-          };
+      // if (req.body.type == 'book-in-store') {
+      //     var subject = "Rezervare produs",
+      //         template_name = "Comanda ta este in curs de rezervare!",
+      //         template_content = [{
+      //           "name": "Rezervare produs",
+      //           "content": "Rezervare produs"
+      //         }];
+      // }
+      // if (req.body.type == 'preorder') {
+      //     var subject = "Precomanda produs",
+      //         template_name = "Precomanda ta a fost inregistrata cu succes!",
+      //         template_content = [{
+      //           "name": "Precomanda produs",
+      //           "content": "Precomanda produs"
+      //         }];
+      // }
+      // if (req.body.type == 'book-confirmation') {
+      //     var subject = "Rezervare produs: Succes!",
+      //         template_name = "Comanda ta te asteapta in magazinul Caramel!",
+      //         template_content = [{
+      //           "name": "Rezervare produs",
+      //           "content": "Rezervare produs"
+      //         }];
+      // }
+      // var message = {
+      //         "subject": subject,
+      //         "from_email": "contact@caramel.ro",
+      //         "from_name": "Caramel Fashion",
+      //         "to": [{
+      //                 "email": product.customerEmail,
+      //                 "name": product.customerFirstName+' '+product.customerLastName,
+      //                 "type": "to"
+      //             }],
+      //         "merge": true,
+      //         "merge_language": "mailchimp",
+      //         "merge_vars": [{
+      //                 "rcpt": product.customerEmail,
+      //                 "vars": [{
+      //                           "name": "username",
+      //                           'content':product.customerLastName
+      //                         }, {
+      //                           'name': 'storeName',
+      //                           'content':product.store
+      //                         }, {
+      //                           'name': 'pTitle',
+      //                           'content':product.name
+      //                         }, {
+      //                           'name':'pQty',
+      //                           'content':product.quantity
+      //                         }, {
+      //                           'name':'pVariant',
+      //                           'content':product.variant.split('-')[0]
+      //                         }, {
+      //                           'name':'pPrice',
+      //                           'content':product.variant.split('-')[1]
+      //                         }, {
+      //                           'name':'pLink',
+      //                           'content':product.link
+      //                         }]
+      //             }],
+      //     };
 
       
-      var async = false;
-      var sendObject = {"template_name": template_name, "template_content": template_content, "message": message, "async": async};
+      // var async = false;
+      // var sendObject = {"template_name": template_name, "template_content": template_content, "message": message, "async": async};
 
-      mandrill_client.messages.sendTemplate(sendObject, function(result) {
-          res.json({product:product,created:created, email:'success'});
+      // mandrill_client.messages.sendTemplate(sendObject, function(result) {
+
+      //     res.json({product:product,created:created, email:'success'});
 
           /*
           [{
@@ -170,12 +173,12 @@ exports.bookProduct = function(req, res) {
                   "_id": "abc123abc123abc123abc123abc123"
               }]
           */
-      }, function(e) {
-          // Mandrill returns the error as an object with name and message keys
-          console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);
-          res.json({product:product,created:created, email:'error'});
-          // A mandrill error occurred: Unknown_Subaccount - No subaccount exists with the id 'customer-123'
-      });
+      // }, function(e) {
+      //     // Mandrill returns the error as an object with name and message keys
+      //     console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);
+      //     res.json({product:product,created:created, email:'error'});
+      //     // A mandrill error occurred: Unknown_Subaccount - No subaccount exists with the id 'customer-123'
+      // });
     });
 };
 
