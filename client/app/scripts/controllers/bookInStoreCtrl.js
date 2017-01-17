@@ -22,7 +22,6 @@ angular.module('sbAdminApp')
   		$http.get('/book-confirmation/'+id).then(function(response) {
   			
         if (response.status != 'error') {
-          console.log($scope.products.length);
           if ($scope.products.length == 1) {
             $state.go('dashboard.bookedProducts');
             $scope.getFiltered('email-sent');
