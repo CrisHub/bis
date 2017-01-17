@@ -203,16 +203,16 @@ exports.bookConfirmation = function(req, res) {
                           "email": product.customerEmail,
                           "name": product.customerFirstName+' '+product.customerLastName,
                           "type": "to"
-                      },
+                        },
                         {
                           "email": "ccristian.moldovan@yahoo.com",
                           "name": product.customerFirstName+' '+product.customerLastName,
-                          "type": "Bcc"
+                          "type": "bcc"
                         },
                         {
                           "email": "oana.elena.blaga@gmail.com",
                           "name": product.customerFirstName+' '+product.customerLastName,
-                          "type": "Bcc"
+                          "type": "bcc"
                         }],
                   "merge": true,
                   "merge_language": "mailchimp",
