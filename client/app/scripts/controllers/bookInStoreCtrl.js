@@ -14,7 +14,7 @@ angular.module('sbAdminApp')
       {value:'picked', label:'Archived'},
       {value:'null', label:'Email not sent'}
     ];
-    $scope.currentFilter = $scope.activeFilters[1];
+    $scope.currentFilter = $scope.activeFilters[3];
   	$scope.products = resolveData.data;
   	$scope.pageTitle = 'Booked products';
   	alertify.logPosition("top left");
