@@ -37,7 +37,6 @@ var setShopify = function(req, res) {
         res.redirect('/auth_app');
     }
     else {
-      console.log(req.session.oauth_access_token);
         //Using the shopify node.js library to make the calls to Shopify. This var is the configuration object.
         Shopify = new shopifyAPI({
             shop: req.session.shopUrl.split('//')[1],
@@ -92,7 +91,7 @@ exports.bookProduct = function(req, res) {
     var parsedUrl = url.parse(req.originalUrl, true);
     console.log(req.body);
     db.Product
-    .findOrCreate({where: {email:req.body.email,variantId:req.body.variantId}})
+    .findOrCreate({where: {email:req.body.customerEmail,variantId:req.body.variantId}})
     .spread(function(product, created) {
       var product = product.get({plain: true});
         res.json({product:product,created:created, email:'success'});
