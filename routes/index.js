@@ -215,10 +215,11 @@ exports.bookConfirmation = function(req, res) {
                           "name": product.customerFirstName+' '+product.customerLastName,
                           "type": "bcc"
                         }],
+                  "bcc_address": "message.bcc_address@example.com",
                   "merge": true,
                   "merge_language": "mailchimp",
                   "merge_vars": [{
-                          //"rcpt": product.customerEmail,
+                          "rcpt": product.customerEmail,
                           "vars": [{
                                     "name": "username",
                                     'content':product.customerLastName
