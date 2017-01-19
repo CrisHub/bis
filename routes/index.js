@@ -218,7 +218,7 @@ exports.bookConfirmation = function(req, res) {
                   "merge": true,
                   "merge_language": "mailchimp",
                   "merge_vars": [{
-                          "rcpt": product.customerEmail,
+                          //"rcpt": product.customerEmail,
                           "vars": [{
                                     "name": "username",
                                     'content':product.customerLastName
