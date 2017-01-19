@@ -218,6 +218,31 @@ exports.bookConfirmation = function(req, res) {
                   "bcc_address": "message.bcc_address@example.com",
                   "merge": true,
                   "merge_language": "mailchimp",
+                  "global_merge_vars": [{
+                                    "name": "username",
+                                    'content':product.customerLastName
+                                  }, {
+                                    'name': 'storeName',
+                                    'content':product.store
+                                  }, {
+                                    'name': 'pTitle',
+                                    'content':product.name
+                                  }, {
+                                    'name':'pQty',
+                                    'content':product.quantity
+                                  }, {
+                                    'name':'pVariant',
+                                    'content':product.variant.split('-')[0]
+                                  }, {
+                                    'name':'pPrice',
+                                    'content':product.variant.split('-')[1]
+                                  }, {
+                                    'name':'pLink',
+                                    'content':product.link
+                                  }, {
+                                    'name':'crtDate',
+                                    'content': moment().format("DD.MM.YYYY")
+                                  }],
                   "merge_vars": [{
                           "rcpt": product.customerEmail,
                           "vars": [{
