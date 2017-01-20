@@ -95,7 +95,7 @@ angular.module('sbAdminApp')
       maxDate: new Date(),
       startingDay: 1
     };
-    $scope.open = function() {
+    $scope.openDatepicker = function() {
       $scope.datepicker.opened = true;
     };
 
