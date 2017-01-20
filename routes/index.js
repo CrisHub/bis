@@ -89,7 +89,6 @@ exports.renderApp = function(req, res){
 exports.bookProduct = function(req, res) {
     setShopify(req, res);
     var parsedUrl = url.parse(req.originalUrl, true);
-    console.log(req.body);
     db.Product
     .findOrCreate({where: {customerEmail:req.body.customerEmail,variantId:req.body.variantId}, defaults:req.body})
     .spread(function(product, created) {
@@ -176,7 +175,6 @@ exports.bookProduct = function(req, res) {
           */
       // }, function(e) {
       //     // Mandrill returns the error as an object with name and message keys
-      //     console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);
       //     res.json({product:product,created:created, email:'error'});
       //     // A mandrill error occurred: Unknown_Subaccount - No subaccount exists with the id 'customer-123'
       // });
@@ -292,7 +290,6 @@ exports.bookConfirmation = function(req, res) {
               */
           }, function(e) {
               // Mandrill returns the error as an object with name and message keys
-              console.log('A mandrill error occurred: ' + e.name + ' - ' + e.message);
               // res.redirect("/render_app");
               res.json(e);
               // A mandrill error occurred: Unknown_Subaccount - No subaccount exists with the id 'customer-123'
