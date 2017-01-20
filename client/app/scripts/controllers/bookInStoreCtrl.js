@@ -81,4 +81,35 @@ angular.module('sbAdminApp')
       $scope.reverse = !$scope.reverse;
       $scope.propertyName = propertyName;
     };
-  });
+    $scope.today = function() {
+      $scope.dt = new Date();
+    };
+    $scope.today();
+
+    $scope.clear = function() {
+      $scope.dt = null;
+    };
+
+    $scope.dateOptions = {
+      dateDisabled: disabled,
+      formatYear: 'yy',
+      maxDate: new Date(),
+      startingDay: 1
+    };
+    $scope.open = function() {
+      $scope.datepicker.opened = true;
+    };
+
+    $scope.setDate = function(year, month, day) {
+      $scope.dt = new Date(year, month, day);
+    };
+
+    $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
+    $scope.format = $scope.formats[0];
+    $scope.altInputFormats = ['M!/d!/yyyy'];
+
+    $scope.datepicker = {
+      opened: false
+    };
+
+});

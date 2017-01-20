@@ -14,6 +14,12 @@
                     </li>
                   </ul>
                 </div>
+                <p class="input-group">
+                  <input type="text" class="form-control" uib-datepicker-popup ng-model="dt" is-open="datepicker.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
+                  <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="openDatepicker()"><i class="glyphicon glyphicon-calendar"></i></button>
+                  </span>
+                </p>
             </h1>
         </div>
     </div>
