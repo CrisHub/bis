@@ -93,7 +93,7 @@ angular.module('sbAdminApp')
     $scope.dateOptions = {
       formatYear: 'yy',
       maxDate: new Date(),
-      startingDay: 1
+      startingDay: 1,
       format:'dd-MM-yyyy';
     };
     $scope.openDatepicker = function() {
