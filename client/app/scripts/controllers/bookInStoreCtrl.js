@@ -91,7 +91,6 @@ angular.module('sbAdminApp')
     };
 
     $scope.dateOptions = {
-      dateDisabled: disabled,
       formatYear: 'yy',
       maxDate: new Date(),
       startingDay: 1
