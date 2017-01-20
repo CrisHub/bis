@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-lg-12">
             <h1 class="page-header" style="margin: 5px 0 20px;">
-                <div class="btn-group">
+                <div class="btn-group" style="vertical-align: middle;">
                   <button type="button" class="btn btn-primary">Status: {{currentFilter.label}}</button>
                   <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                     <span class="caret"></span>
@@ -14,7 +14,7 @@
                     </li>
                   </ul>
                 </div>
-                <div style="display: inline-block;max-width: 250px;">
+                <div style="display: inline-block;max-width: 250px;vertical-align: middle;">
                     <p class="input-group">
                       <input type="text" class="form-control" uib-datepicker-popup ng-model="dt" is-open="datepicker.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" />
                       <span class="input-group-btn">
