@@ -90,7 +90,7 @@ exports.bookProduct = function(req, res) {
     setShopify(req, res);
     var parsedUrl = url.parse(req.originalUrl, true);
     db.Product
-    .findOrCreate({where: {customerEmail:req.body.customerEmail,variantId:req.body.variantId}, defaults:req.body})
+    .findOrCreate({where: {customerEmail:req.body.customerEmail,variantId:req.body.variantId, status:req.body.status}, defaults:req.body})
     .spread(function(product, created) {
       var product = product.get({plain: true});
         res.json({product:product,created:created, email:'success'});
