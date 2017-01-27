@@ -324,27 +324,27 @@ exports.preorderProduct = function(req, res) {
 //     });
 // };
 
-// exports.softDeleteProduct = function(req, res) {
-//   setShopify(req, res);
-//   var parsedUrl = url.parse(req.originalUrl, true);
-//   db.Product
-//         .findOne({where:{id:req.params.id}})
-//         .then(function(product) {
-//           product.set({status:'picked', deletedAt:moment().format('YYYY-MM-DD kk:mm:ss')}).save().then(function() {
-//             // res.json(product);
-//             Shopify.put('/admin/variants/'+product.dataValues.variantId+'.json',
-//             {
-//               "variant": {
-//                 "id": parseInt(product.dataValues.variantId),
-//                 "inventory_quantity_adjustment": -1
-//               }
-//             },
-//             function(err, data, headers) {
-//                 res.json(product);
-//             });
-//           });
-//         });
-// };
+exports.softDeleteProduct = function(req, res) {
+  setShopify(req, res);
+  var parsedUrl = url.parse(req.originalUrl, true);
+  db.Product
+        .findOne({where:{id:req.params.id}})
+        .then(function(product) {
+          product.set({status:'picked', deletedAt:moment().format('YYYY-MM-DD kk:mm:ss')}).save().then(function() {
+            // res.json(product);
+            Shopify.put('/admin/variants/'+product.dataValues.variantId+'.json',
+            {
+              "variant": {
+                "id": parseInt(product.dataValues.variantId),
+                "inventory_quantity_adjustment": -1
+              }
+            },
+            function(err, data, headers) {
+                res.json(product);
+            });
+          });
+        });
+};
 
 exports.viewProduct = function(req, res) {
     setShopify(req, res);
