@@ -370,7 +370,7 @@ exports.getProducts = function(req, res) {
   var filters = req.query;
 
   if (filters.status == 'null'){
-    filters.status = null;
+    filters.status = 'null';
   }
 
   if (filters.status == 'all') {
