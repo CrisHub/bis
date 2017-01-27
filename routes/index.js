@@ -314,15 +314,22 @@ exports.preorderProduct = function(req, res) {
     });
 };
 
-// exports.deleteProduct = function(req, res) {
-//   setShopify(req, res);
-//   var parsedUrl = url.parse(req.originalUrl, true);
+exports.deleteProduct = function(req, res) {
+  setShopify(req, res);
+  var parsedUrl = url.parse(req.originalUrl, true);
+  db.Product
+    .findOne({where:{id:req.params.id}})
+    .then(function(product) {
+      product.set({status:'picked', deletedAt:moment().format('YYYY-MM-DD kk:mm:ss')}).save().then(function() {
+        res.json(product);
+      });
+    });
 //     db.Product
 //     .destroy({where:{id:req.params.id}, force:true})
 //     .then(function(affectedRows) {
 //       res.json(affectedRows);
 //     });
-// };
+};
 
 exports.softDeleteProduct = function(req, res) {
   setShopify(req, res);
