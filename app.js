@@ -74,6 +74,7 @@ app.get('/delete-product/:id', routes.deleteProduct);
 app.get('/soft-delete-product/:id', routes.softDeleteProduct);
 app.post('/book-product', cors(corsOptions), routes.bookProduct);
 app.get('/products', routes.getProducts);
+app.get('/discounts', routes.getDiscounts);
 
 
 db.sequelize.sync().then(function() {
