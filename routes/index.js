@@ -86,7 +86,7 @@ exports.renderApp = function(req, res){
 exports.getDiscounts = function(req,res){
     setShopify(req, res);
     Shopify.get('/admin/discounts.json', function(err, data, headers) {
-        res.json(data);
+        res.json({data:data, err:err, headers:headers});
     });
 };
 
