@@ -83,7 +83,12 @@ exports.renderApp = function(req, res){
     res.render('index');
 };
 
-
+exports.getDiscounts = function(req,res){
+    setShopify(req, res);
+    Shopify.get('/admin/discounts.json', function(err, data, headers) {
+        res.json(data);
+    });
+};
 
 
 exports.bookProduct = function(req, res) {
