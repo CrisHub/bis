@@ -56,10 +56,11 @@ var setShopify = function(req, res) {
  * redirect to app authorisation.
  */
 exports.index = function(req, res){
+    setShopify(req, res);
     if (!req.session.oauth_access_token) {
         var parsedUrl = url.parse(req.originalUrl, true);
         if (parsedUrl.query && parsedUrl.query.shop) {
-            req.session.shopUrl = 'https://' + parsedUrl.query.shop;
+          req.session.shopUrl = 'https://' + (parsedUrl.query.shop || 'caramel-dev.myshopify.com');
         }
         res.redirect("/auth_app");
     }
