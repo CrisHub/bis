@@ -28,7 +28,7 @@
     "oauth": "~0.9.14",
     "pg": "^6.1.0",
     "request": "^2.74.0",
-    "sequelize": "^3.24.3",
+    "sequelize": "^6.3.5",
     "shopify-node-api": "^1.7.2"
   }
 }
