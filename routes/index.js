@@ -56,6 +56,8 @@ var setShopify = function(req, res) {
  * redirect to app authorisation.
  */
 exports.index = function(req, res){
+    res.redirect('/render_app');
+    return;
     setShopify(req, res);
     if (!req.session.oauth_access_token) {
         var parsedUrl = url.parse(req.originalUrl, true);
