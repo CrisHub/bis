@@ -8,6 +8,8 @@ if (!global.hasOwnProperty('db')) {
     protocol: 'postgres',
     port:     5432,
     host:     process.env.databaseHost,
+    ssl: true,
+    "dialectOptions":{ "ssl": {"require":true } },
     logging:  true //false
   });
 
