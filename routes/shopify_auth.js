@@ -8,6 +8,7 @@
 var app = require('../app'),
     OAuth = require('oauth').OAuth2,
     url = require("url");
+var config = require('../config');
 
 exports.AppAuth = function() {
     var self = this;
@@ -47,8 +48,10 @@ exports.AppAuth = function() {
      */
     this.getCode = function(req, res) {
         var redirectUrl = self.OAuth(req.session.shopUrl).getAuthorizeUrl({
-            redirect_uri : app.nconf.get('oauth:redirect_url'),
-            scope: app.nconf.get('oauth:scope')
+            // redirect_uri : app.nconf.get('oauth:redirect_url'),
+            // scope: app.nconf.get('oauth:scope')
+            redirect_uri: config.cfg["oauth:redirect_url"],
+            scope: config.cfg["oauth:scope"]
         });
         res.redirect(redirectUrl);
     };

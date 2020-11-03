@@ -4,6 +4,7 @@
  * Copyright 2014 Richard Bremner
  * richard@codezuki.com
  */
+'use strict';
 
 var bodyParser = require('body-parser'),
     cookieParser = require('cookie-parser'),
@@ -81,4 +82,6 @@ db.sequelize.sync().then(function() {
   app.listen(app.get('port'), function() {
 //       console.log('Listening on port ' + app.get('port'));
   });
+}, function (err) {
+    console.log(err);
 });
