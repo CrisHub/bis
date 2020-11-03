@@ -18,11 +18,11 @@ var app = require('../app'),
     Logger = require('le_node');
 
 var log = new Logger({
-  // token:process.env.loggerToken
-    token: config.cfg.loggerToken
+  token:process.env.loggerToken
+    // token: config.cfg.loggerToken
 });
 var mandrill = require('mandrill-api/mandrill');
-var mandrill_client = new mandrill.Mandrill(/* process.env.mandrill_key */ config.cfg.mandrill_key);
+var mandrill_client = new mandrill.Mandrill(process.env.mandrill_key /*config.cfg.mandrill_key*/);
 
 var Shopify;
 
@@ -30,8 +30,8 @@ var setShopify = function(req, res) {
     var parsedUrl = url.parse(req.originalUrl, true);
     req.session.shopUrl = 'https://caramel-dev.myshopify.com';
     //In case server stops and starts again, check if we need the auth token again
-    // req.session.oauth_access_token = process.env.aTK;
-    req.session.oauth_access_token = config.cfg.aTK;
+    req.session.oauth_access_token = process.env.aTK;
+    // req.session.oauth_access_token = config.cfg.aTK;
     if (!req.session.oauth_access_token) {
         if (parsedUrl.query && parsedUrl.query.shop) {
         req.session.shopUrl = 'https://' + parsedUrl.query.shop;
@@ -43,12 +43,12 @@ var setShopify = function(req, res) {
         //Using the shopify node.js library to make the calls to Shopify. This var is the configuration object.
         Shopify = new shopifyAPI({
             shop: req.session.shopUrl.split('//')[1],
-            // shopify_api_key: app.nconf.get('oauth:api_key'),
-            shopify_api_key: config.cfg["oauth:api_key"],
-            // shopify_shared_secret: app.nconf.get('oauth:client_secret'),
-            shopify_shared_secret: config.cfg["oauth:client_secret"],
-            // access_token: req.session.oauth_access_token,
-            access_token: config.cfg.aTK,
+            shopify_api_key: app.nconf.get('oauth:api_key'),
+            // shopify_api_key: config.cfg["oauth:api_key"],
+            shopify_shared_secret: app.nconf.get('oauth:client_secret'),
+            // shopify_shared_secret: config.cfg["oauth:client_secret"],
+            access_token: req.session.oauth_access_token,
+            // access_token: config.cfg.aTK,
             verbose: false
         });
     }
@@ -62,6 +62,8 @@ var setShopify = function(req, res) {
  * redirect to app authorisation.
  */
 exports.index = function(req, res){
+    res.redirect('/render_app');
+    return;
     setShopify(req, res);
     if (!req.session.oauth_access_token) {
         var parsedUrl = url.parse(req.originalUrl, true);
